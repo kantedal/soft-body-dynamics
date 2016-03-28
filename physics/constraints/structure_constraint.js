@@ -1,6 +1,7 @@
 /**
  * Created by filles-dator on 2016-03-26.
  */
+///<reference path="./constraint.ts"/>
 ///<reference path="./../point_mass.ts"/>
 ///<reference path="./../../renderer.ts"/>
 var StructureConstraint = (function () {

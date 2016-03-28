@@ -5,7 +5,7 @@
 ///<reference path="./renderer.ts"/>
 ///<reference path="./physics/cloth.ts"/>
 ///<reference path="./physics/soft_body.ts"/>
-///<reference path="./gui_handler.ts"/>
+///<reference path="./gui/gui_handler.ts"/>
 ///<reference path="./physics/point_mass.ts"/>
 ///<reference path="lib/stats.d.ts"/>
 ///<reference path="./threejs/three.d.ts"/>

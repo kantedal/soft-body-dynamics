@@ -15,8 +15,7 @@ class Cloth {
     private _renderer: Renderer;
     private _points: PointMass[];
     private _pointMesh: THREE.Mesh[];
-    private _constraints: StructureConstraint[];
-    private _bendConstraints: BendConstraint[];
+
     private _clothMesh: THREE.Mesh;
     private _gravity: THREE.Vector3;
     private _windDirection: THREE.Vector3;
@@ -34,10 +33,10 @@ class Cloth {
         this._windDirection = new THREE.Vector3(1,0,0);
         this._windForce = 10;
 
-        this.generateCloth();
+        this.generate();
     }
 
-    public generateCloth(){
+    public generate(){
         if(this._clothMesh)
             this._renderer.scene.remove(this._clothMesh);
 

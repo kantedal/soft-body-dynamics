@@ -2,8 +2,8 @@
  * Created by filles-dator on 2016-03-27.
  */
 
-///<reference path="./physics/cloth.ts"/>
-/// <reference path="./lib/jquery.d.ts" />
+///<reference path="./../physics/cloth.ts"/>
+/// <reference path="./../lib/jquery.d.ts" />
 
 class GuiHandler {
 
@@ -49,14 +49,14 @@ class GuiHandler {
             self._cloth.dimensionX = Math.max(2,Math.min(100, $('#dimensionX').val()));
             $('#dimensionX').val(self._cloth.dimensionX);
 
-            self._cloth.generateCloth();
+            self._cloth.generate();
         });
 
         $('#dimensionY').on('change', function() {
             self._cloth.dimensionY = Math.max(2,Math.min(100, $('#dimensionY').val()));
             $('#dimensionY').val(self._cloth.dimensionY);
 
-            self._cloth.generateCloth();
+            self._cloth.generate();
         });
     }
 

@@ -3,6 +3,7 @@
  */
 ///<reference path="./../point_mass.ts"/>
 ///<reference path="./../../renderer.ts"/>
+///<reference path="./constraint.ts"/>
 var BendConstraint = (function () {
     function BendConstraint(restingDistance, stiffness, pointMassA, pointMassB, renderer) {
         this._restingDistance = 1;

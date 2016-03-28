@@ -4,8 +4,9 @@
 
 ///<reference path="./../point_mass.ts"/>
 ///<reference path="./../../renderer.ts"/>
+///<reference path="./constraint.ts"/>
 
-class BendConstraint {
+class BendConstraint implements Constraint {
     private _renderer: Renderer;
     private _restingDistance: number = 1;
     private _tearingDistance: number = 2;

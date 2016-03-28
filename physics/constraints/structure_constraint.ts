@@ -2,10 +2,11 @@
  * Created by filles-dator on 2016-03-26.
  */
 
+///<reference path="./constraint.ts"/>
 ///<reference path="./../point_mass.ts"/>
 ///<reference path="./../../renderer.ts"/>
 
-class StructureConstraint {
+class StructureConstraint implements Constraint {
     private _renderer: Renderer;
     private _restingDistance: number = 1;
     private _tearingDistance: number = 2;

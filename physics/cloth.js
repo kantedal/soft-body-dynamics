@@ -17,9 +17,9 @@ var Cloth = (function () {
         this._gravity = new THREE.Vector3(0, -9.82, 0);
         this._windDirection = new THREE.Vector3(1, 0, 0);
         this._windForce = 10;
-        this.generateCloth();
+        this.generate();
     }
-    Cloth.prototype.generateCloth = function () {
+    Cloth.prototype.generate = function () {
         if (this._clothMesh)
             this._renderer.scene.remove(this._clothMesh);
         this._points = [];
