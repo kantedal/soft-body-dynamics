@@ -46,14 +46,20 @@ var App = (function () {
         this._clock = new THREE.Clock();
         this._stats = new Stats();
         this._cloth = new Cloth(30, 50, this._renderer);
-        var geometry = new THREE.BoxGeometry(20, 20, 20);
-        var material = new THREE.MeshPhongMaterial({
+        var plane_geometry = new THREE.PlaneGeometry(200, 200, 1, 1);
+        var plane_material = new THREE.MeshBasicMaterial({ color: 0x999999, side: THREE.DoubleSide });
+        var plane = new THREE.Mesh(plane_geometry, plane_material);
+        plane.translateY(-30);
+        plane.rotateX(Math.PI / 2);
+        this._renderer.scene.add(plane);
+        var cube_geometry = new THREE.BoxGeometry(20, 20, 20);
+        var cube_material = new THREE.MeshPhongMaterial({
             side: THREE.DoubleSide,
             color: 0x444499,
-            specular: 0x222222,
-            shininess: 4
+            specular: 0x225522,
+            shininess: 14
         });
-        var cube = new THREE.Mesh(geometry, material);
+        var cube = new THREE.Mesh(cube_geometry, cube_material);
         this._renderer.scene.add(cube);
         this._softBody = new SoftBody(cube, [19, 21], [25, 35], this._renderer);
         //var geometry = new THREE.SphereGeometry( 20, 32, 32 );
