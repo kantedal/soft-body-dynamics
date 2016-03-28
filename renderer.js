@@ -1,5 +1,5 @@
 ///<reference path="./threejs/three.d.ts"/>
-///<reference path="./threejs/three-orbitcontrols.d.ts"/>
+///<reference path="./threejs/three-editorcontrols.d.ts"/>
 var Renderer = (function () {
     function Renderer() {
         var _this = this;
@@ -14,7 +14,7 @@ var Renderer = (function () {
         this.renderer.sortObjects = true;
         this._scene = new THREE.Scene();
         this._camera = new THREE.PerspectiveCamera(70, window.innerWidth / window.innerHeight, 1.1, 400);
-        //this._controls = new THREE.OrbitControls( this._camera );
+        this._controls = new THREE.EditorControls(this._camera);
         this._camera.position.set(0, -15, -70);
         this._cameraLookAt = new THREE.Vector3(0, -20, 0);
         this._camera.lookAt(this._cameraLookAt);

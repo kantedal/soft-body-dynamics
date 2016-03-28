@@ -60,7 +60,7 @@ var App = (function () {
             shininess: 14
         });
         var cube = new THREE.Mesh(cube_geometry, cube_material);
-        this._renderer.scene.add(cube);
+        //this._renderer.scene.add( cube );
         this._softBody = new SoftBody(cube, [19, 21], [25, 35], this._renderer);
         //var geometry = new THREE.SphereGeometry( 20, 32, 32 );
         //var material = new THREE.MeshPhongMaterial({
@@ -93,7 +93,7 @@ var App = (function () {
         this._stats.domElement.style.left = '20px';
         this._stats.domElement.style.top = '20px';
         document.body.appendChild(this._stats.domElement);
-        this.update();
+        //this.update();
     };
     App.prototype.update = function () {
         var _this = this;

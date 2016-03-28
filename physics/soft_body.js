@@ -21,6 +21,23 @@ var SoftBody = (function (_super) {
         this._dampingFactor = 0.02;
         this._renderer = renderer;
         this._bodyMesh = bodyMesh;
+        this._pointMesh = [];
+        var samplingRate = 5;
+        bodyMesh.geometry.computeBoundingBox();
+        var boundingBox = bodyMesh.geometry.boundingBox;
+        console.log(boundingBox.max);
+        console.log(boundingBox.min);
+        var geometry = new THREE.SphereGeometry(0.5, 4, 4);
+        var material = new THREE.MeshBasicMaterial({ color: 0xff0000 });
+        for (var x = boundingBox.min.x; x <= boundingBox.max.x; x += samplingRate) {
+            for (var y = boundingBox.min.y; y <= boundingBox.max.y; y += samplingRate) {
+                for (var z = boundingBox.min.z; z <= boundingBox.max.z; z += samplingRate) {
+                    var point = new THREE.Mesh(geometry.clone(), material);
+                    point.position.set(x, y, z);
+                    this._renderer.scene.add(point);
+                }
+            }
+        }
         for (var i = 0; i < this._bodyMesh.geometry.vertices.length; i++) {
             var vert_pos = this._bodyMesh.geometry.vertices[i].clone();
             vert_pos.applyMatrix4(this._bodyMesh.matrixWorld);

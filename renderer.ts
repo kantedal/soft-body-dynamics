@@ -1,5 +1,5 @@
 ///<reference path="./threejs/three.d.ts"/>
-///<reference path="./threejs/three-orbitcontrols.d.ts"/>
+///<reference path="./threejs/three-editorcontrols.d.ts"/>
 
 class Renderer {
     private renderer: THREE.WebGLRenderer;
@@ -8,7 +8,7 @@ class Renderer {
     private _cameraBasePosition: THREE.Vector3;
     private _cameraLookAt: THREE.Vector3;
     private _light: THREE.DirectionalLight;
-    private _controls: THREE.OrbitControls;
+    private _controls: THREE.EditorControls;
 
     constructor(){
         this.renderer = new THREE.WebGLRenderer({ alpha: true });
@@ -19,7 +19,7 @@ class Renderer {
 
         this._scene = new THREE.Scene();
         this._camera = new THREE.PerspectiveCamera(70, window.innerWidth / window.innerHeight, 1.1, 400);
-        //this._controls = new THREE.OrbitControls( this._camera );
+        this._controls = new THREE.EditorControls( this._camera );
 
         this._camera.position.set(0,-15,-70);
         this._cameraLookAt = new THREE.Vector3(0,-20,0);

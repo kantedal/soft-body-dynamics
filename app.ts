@@ -49,7 +49,7 @@ class App {
             shininess: 14
         });
         var cube = new THREE.Mesh( cube_geometry, cube_material );
-        this._renderer.scene.add( cube );
+        //this._renderer.scene.add( cube );
         this._softBody = new SoftBody(cube, [19,21], [25,35], this._renderer);
 
         //var geometry = new THREE.SphereGeometry( 20, 32, 32 );
@@ -90,7 +90,7 @@ class App {
         this._stats.domElement.style.top = '20px';
         document.body.appendChild(this._stats.domElement);
 
-        this.update();
+        //this.update();
     }
 
     private update(){
