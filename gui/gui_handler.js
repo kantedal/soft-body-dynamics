@@ -4,11 +4,11 @@
 ///<reference path="./../physics/cloth.ts"/>
 /// <reference path="./../lib/jquery.d.ts" />
 var GuiHandler = (function () {
-    function GuiHandler(cloth) {
-        this._cloth = cloth;
-        this.handlePropertiesChange();
-        this.handleDimensionChange();
-        this.handleGravityChange();
+    function GuiHandler() {
+        //this._cloth = cloth;
+        //this.handlePropertiesChange();
+        //this.handleDimensionChange();
+        //this.handleGravityChange();
         this.handleSelctionChange();
     }
     GuiHandler.prototype.handlePropertiesChange = function () {
@@ -62,8 +62,6 @@ var GuiHandler = (function () {
         this._selectionMode = GuiHandler.MOVE_CLOTH;
         $('#moveCloth').css('background', 'rgba(184, 184, 184, 0.7)');
         $('#addPin').css('background-color', 'rgba(184, 184, 184, 0.3)');
-        $('#moveCloth').val(self._cloth.gravity.x);
-        $('#addPin').val(self._cloth.gravity.y);
         $('#moveCloth').click(function () {
             self._selectionMode = GuiHandler.MOVE_CLOTH;
             $('#moveCloth').css('background', 'rgba(184, 184, 184, 0.7)');

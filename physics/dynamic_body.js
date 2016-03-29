@@ -13,6 +13,8 @@ var DynamicBody = (function () {
         this._points = [];
         this._constraints = [];
         this._pointMesh = [];
+        this._gravity = new THREE.Vector3(0, -9.82, 0);
+        this._dampingFactor = 0.0;
     }
     DynamicBody.prototype.update = function (time, delta) {
         for (var _i = 0, _a = this._constraints; _i < _a.length; _i++) {
@@ -24,10 +26,10 @@ var DynamicBody = (function () {
             var point = this._points[i];
             if (!point.isAttatchment) {
                 //point.constraintForce = this._windDirection.multiplyScalar(this._windDirection.dot())
-                var acceleration = this._gravity.clone().add(point.constraintForce);
-                var velocity = point.currentPos.clone().sub(point.lastPos);
+                point.acceleration = this._gravity.clone().add(point.constraintForce);
+                point.velocity = point.currentPos.clone().sub(point.lastPos);
                 point.lastPos = point.currentPos.clone();
-                point.currentPos = point.currentPos.clone().add(velocity.multiplyScalar(1.0 - this._dampingFactor)).add(acceleration.multiplyScalar(delta * delta));
+                point.currentPos = point.currentPos.clone().add(point.velocity.clone().multiplyScalar(1.0 - this._dampingFactor)).add(point.acceleration.multiplyScalar(delta * delta));
             }
             for (var j = 0; j < point.vertexIndices.length; j++) {
                 this._bodyMesh.geometry.vertices[point.vertexIndices[j]].copy(point.currentPos.clone());

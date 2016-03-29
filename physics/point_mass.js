@@ -78,6 +78,26 @@ var PointMass = (function () {
         enumerable: true,
         configurable: true
     });
+    Object.defineProperty(PointMass.prototype, "velocity", {
+        get: function () {
+            return this._velocity;
+        },
+        set: function (value) {
+            this._velocity = value;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(PointMass.prototype, "acceleration", {
+        get: function () {
+            return this._acceleration;
+        },
+        set: function (value) {
+            this._acceleration = value;
+        },
+        enumerable: true,
+        configurable: true
+    });
     return PointMass;
 })();
 //# sourceMappingURL=point_mass.js.map

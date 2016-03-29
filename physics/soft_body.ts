@@ -11,12 +11,8 @@
 
 class SoftBody extends DynamicBody {
     private _renderer: Renderer;
-    private _gravity: THREE.Vector3 = new THREE.Vector3(0, -9.82, 0);
-    private _dampingFactor: number = 0.0;
 
-    private _pointMesh: THREE.Mesh[];
-
-    constructor(bodyMesh: THREE.Mesh, structureConstraintLimits: number[], bendConstraintLimits: number[], renderer: Renderer) {
+    constructor(bodyMesh: THREE.Mesh, renderer: Renderer) {
         super();
 
         this._renderer = renderer;
@@ -53,25 +49,17 @@ class SoftBody extends DynamicBody {
             }
         }
 
-        //this._points[0].isAttatchment = true;
+        var max_distance_structure = Math.sqrt(samplingRateX*samplingRateX + samplingRateY*samplingRateY + samplingRateZ*samplingRateZ);
+        var max_distance_bend = Math.sqrt(2*samplingRateX*samplingRateX + 2*samplingRateY*samplingRateY + 2*samplingRateZ*samplingRateZ);
 
-        //for (var i = 0; i < this._bodyMesh.geometry.vertices.length; i++) {
-        //    var vert_pos:THREE.Vector3 = this._bodyMesh.geometry.vertices[i].clone();
-        //    vert_pos.applyMatrix4(this._bodyMesh.matrixWorld);
-        //
-        //    var point_mass = new PointMass(vert_pos,1);
-        //    point_mass.attatchVertex(i)
-        //    this._points.push();
-        //}
-
-        var max_distance = Math.sqrt(samplingRateX*samplingRateX + samplingRateY*samplingRateY + samplingRateZ*samplingRateZ);
-        console.log(max_distance);
         for(var i=0; i<this._points.length; i++){
             for (var j = 0; j < this._points.length; j++) {
                 if(j != i){
                     var distance = this._points[i].currentPos.distanceTo(this._points[j].currentPos);
-                    if(distance <= max_distance){
-                        this._constraints.push(new BendConstraint(distance, 0.1, this._points[i], this._points[j], this._renderer));
+                    if(distance <= max_distance_structure){
+                        this._constraints.push(new BendConstraint(distance, 0.3, this._points[i], this._points[j], this._renderer));
+                    }else if(distance <= max_distance_bend){
+                        this._constraints.push(new BendConstraint(distance, 0.07, this._points[i], this._points[j], this._renderer));
                     }
                 }
             }

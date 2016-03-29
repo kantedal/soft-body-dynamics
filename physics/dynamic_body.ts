@@ -14,12 +14,17 @@ abstract class DynamicBody {
     protected _constraints: Constraint[];
     protected _bodyMesh: THREE.Mesh;
     protected _points: PointMass[];
-    protected _pointMesh: THREE.Mesh[]
+    protected _pointMesh: THREE.Mesh[];
+    protected _gravity: THREE.Vector3;
+    protected _dampingFactor: number;
 
     constructor(){
         this._points = [];
         this._constraints = [];
         this._pointMesh = [];
+
+        this._gravity = new THREE.Vector3(0, -9.82, 0);
+        this._dampingFactor = 0.0;
     }
 
     public update(time: number, delta: number){
@@ -33,10 +38,10 @@ abstract class DynamicBody {
             if (!point.isAttatchment) {
                 //point.constraintForce = this._windDirection.multiplyScalar(this._windDirection.dot())
 
-                var acceleration = this._gravity.clone().add(point.constraintForce);
-                var velocity = point.currentPos.clone().sub(point.lastPos);
+                point.acceleration = this._gravity.clone().add(point.constraintForce);
+                point.velocity = point.currentPos.clone().sub(point.lastPos);
                 point.lastPos = point.currentPos.clone();
-                point.currentPos = point.currentPos.clone().add(velocity.multiplyScalar(1.0 - this._dampingFactor)).add(acceleration.multiplyScalar(delta * delta));
+                point.currentPos = point.currentPos.clone().add(point.velocity.clone().multiplyScalar(1.0 - this._dampingFactor)).add(point.acceleration.multiplyScalar(delta * delta));
             }
 
             for(var j=0; j<point.vertexIndices.length; j++) {

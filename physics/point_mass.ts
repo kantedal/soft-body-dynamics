@@ -7,9 +7,11 @@
 ///<reference path="./../app.ts"/>
 
 class PointMass {
-
     private _currentPos: THREE.Vector3;
     private _lastPos: THREE.Vector3;
+    private _velocity: THREE.Vector3;
+    private _acceleration: THREE.Vector3;
+
     private _constraintForce: THREE.Vector3;
     private _mass: number;
     private _vertexIndices: number[];
@@ -73,5 +75,18 @@ class PointMass {
 
     get vertexOffset():THREE.Vector3[] {
         return this._vertexOffset;
+    }
+
+    get velocity():THREE.Vector3 {
+        return this._velocity;
+    }
+    set velocity(value:THREE.Vector3) {
+        this._velocity = value;
+    }
+    get acceleration():THREE.Vector3 {
+        return this._acceleration;
+    }
+    set acceleration(value:THREE.Vector3) {
+        this._acceleration = value;
     }
 }
