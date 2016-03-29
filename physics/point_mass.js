@@ -5,14 +5,18 @@
 ///<reference path="./../renderer.ts"/>
 ///<reference path="./../app.ts"/>
 var PointMass = (function () {
-    function PointMass(position, mass, vertex_idx) {
+    function PointMass(position, mass) {
         this._currentPos = position.clone();
         this._lastPos = position.clone();
         this._mass = mass;
         this._constraintForce = new THREE.Vector3(0, 0, 0);
         this._isAttatchment = false;
-        this._vertexIndex = vertex_idx;
+        this._vertexIndices = [];
+        this._vertexOffset = [];
     }
+    PointMass.prototype.attatchVertex = function (index, offset) {
+        this._vertexIndices.push(index);
+    };
     Object.defineProperty(PointMass.prototype, "lastPos", {
         get: function () {
             return this._lastPos;
@@ -60,9 +64,16 @@ var PointMass = (function () {
         enumerable: true,
         configurable: true
     });
-    Object.defineProperty(PointMass.prototype, "vertexIndex", {
+    Object.defineProperty(PointMass.prototype, "vertexIndices", {
         get: function () {
-            return this._vertexIndex;
+            return this._vertexIndices;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(PointMass.prototype, "vertexOffset", {
+        get: function () {
+            return this._vertexOffset;
         },
         enumerable: true,
         configurable: true

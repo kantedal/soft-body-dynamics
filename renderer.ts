@@ -1,4 +1,5 @@
 ///<reference path="./threejs/three.d.ts"/>
+///<reference path="./threejs/three-orbitcontrols.d.ts"/>
 ///<reference path="./threejs/three-editorcontrols.d.ts"/>
 
 class Renderer {
@@ -46,6 +47,7 @@ class Renderer {
     }
 
     render() {
+
         this.renderer.render(this._scene,this._camera);
     }
 
@@ -89,5 +91,13 @@ class Renderer {
 
     set cameraLookAt(value:THREE.Vector3) {
         this._cameraLookAt = value;
+    }
+
+    get controls():THREE.EditorControls {
+        return this._controls;
+    }
+
+    set controls(value:THREE.EditorControls) {
+        this._controls = value;
     }
 }
