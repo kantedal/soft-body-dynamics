@@ -14,6 +14,7 @@ var App = (function () {
         var _this = this;
         this.mouseDown = function (ev) {
             if (_this._shouldDrag) {
+                _this._renderer.controls.enabled = false;
                 _this._selectedPointMass = _this._softBody.points[0];
                 var closestDistance = 1000;
                 for (var _i = 0, _a = _this._softBody.points; _i < _a.length; _i++) {
@@ -29,6 +30,7 @@ var App = (function () {
         };
         this.mouseUp = function (ev) {
             if (_this._selectedPointMass != null) {
+                _this._renderer.controls.enabled = true;
                 if (_this._guiHandler.selectionMode == GuiHandler.MOVE_CLOTH)
                     _this._selectedPointMass.isAttatchment = false;
                 _this._selectedPointMass = null;
@@ -52,7 +54,7 @@ var App = (function () {
         plane.translateY(-30);
         plane.rotateX(Math.PI / 2);
         this._renderer.scene.add(plane);
-        var cube_geometry = new THREE.BoxGeometry(20, 20, 20);
+        var cube_geometry = new THREE.BoxGeometry(60, 10, 10, 12, 1, 1);
         var cube_material = new THREE.MeshPhongMaterial({
             side: THREE.DoubleSide,
             color: 0x444499,
@@ -60,9 +62,9 @@ var App = (function () {
             shininess: 14
         });
         var cube = new THREE.Mesh(cube_geometry, cube_material);
-        //this._renderer.scene.add( cube );
+        this._renderer.scene.add(cube);
         this._softBody = new SoftBody(cube, [19, 21], [25, 35], this._renderer);
-        //var geometry = new THREE.SphereGeometry( 20, 32, 32 );
+        //var geometry = new THREE.SphereGeometry( 20, 8, 8 );
         //var material = new THREE.MeshPhongMaterial({
         //    side: THREE.DoubleSide,
         //    color: 0x444499,
@@ -93,15 +95,13 @@ var App = (function () {
         this._stats.domElement.style.left = '20px';
         this._stats.domElement.style.top = '20px';
         document.body.appendChild(this._stats.domElement);
-        //this.update();
+        this.update();
     };
     App.prototype.update = function () {
         var _this = this;
         this._stats.begin();
         //this._cloth.update(this._clock.getElapsedTime(), 0.05);
         this._softBody.update(this._clock.getElapsedTime(), 0.05);
-        this._renderer.camera.position.copy(this._renderer.cameraBasePosition.clone().add(new THREE.Vector3(this._mouse.x * 15, -this._mouse.y * 15, 0)));
-        this._renderer.camera.lookAt(new THREE.Vector3(0, -5, 0));
         this._raycaster.setFromCamera(this._mouse, this._renderer.camera);
         this._raycasterIntersects = this._raycaster.intersectObject(this._softBody.bodyMesh);
         if (this._raycasterIntersects.length != 0) {

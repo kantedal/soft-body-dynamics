@@ -1,4 +1,5 @@
 ///<reference path="./threejs/three.d.ts"/>
+///<reference path="./threejs/three-orbitcontrols.d.ts"/>
 ///<reference path="./threejs/three-editorcontrols.d.ts"/>
 var Renderer = (function () {
     function Renderer() {
@@ -74,6 +75,16 @@ var Renderer = (function () {
         },
         set: function (value) {
             this._cameraLookAt = value;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(Renderer.prototype, "controls", {
+        get: function () {
+            return this._controls;
+        },
+        set: function (value) {
+            this._controls = value;
         },
         enumerable: true,
         configurable: true

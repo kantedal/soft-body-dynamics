@@ -12,6 +12,7 @@ var DynamicBody = (function () {
     function DynamicBody() {
         this._points = [];
         this._constraints = [];
+        this._pointMesh = [];
     }
     DynamicBody.prototype.update = function (time, delta) {
         for (var _i = 0, _a = this._constraints; _i < _a.length; _i++) {
@@ -28,7 +29,12 @@ var DynamicBody = (function () {
                 point.lastPos = point.currentPos.clone();
                 point.currentPos = point.currentPos.clone().add(velocity.multiplyScalar(1.0 - this._dampingFactor)).add(acceleration.multiplyScalar(delta * delta));
             }
-            this._bodyMesh.geometry.vertices[point.vertexIndex].copy(point.currentPos);
+            for (var j = 0; j < point.vertexIndices.length; j++) {
+                this._bodyMesh.geometry.vertices[point.vertexIndices[j]].copy(point.currentPos.clone());
+            }
+            if (this._pointMesh[i]) {
+                this._pointMesh[i].position.copy(point.currentPos);
+            }
         }
         this._bodyMesh.geometry.verticesNeedUpdate = true;
         this._bodyMesh.geometry.normalsNeedUpdate = true;
@@ -36,6 +42,24 @@ var DynamicBody = (function () {
         this._bodyMesh.geometry.computeVertexNormals();
         this._bodyMesh.geometry.computeBoundingSphere();
         //this._renderer.camera.lookAt(this._clothMesh.geometry.center().clone().multiplyScalar(-3));
+    };
+    DynamicBody.prototype.pointInsideMesh = function (mesh, point) {
+        var raycastDirections = [
+            new THREE.Vector3(1, 0, 0),
+            new THREE.Vector3(-1, 0, 0),
+            new THREE.Vector3(0, 1, 0),
+            new THREE.Vector3(0, -1, 0),
+            new THREE.Vector3(0, 0, 1),
+            new THREE.Vector3(0, 0, -1),
+        ];
+        var raycaster = new THREE.Raycaster();
+        for (var i = 0; i < 6; i++) {
+            raycaster.set(point, raycastDirections[i]);
+            var intersects = raycaster.intersectObject(mesh);
+            if (intersects.length == 0)
+                return false;
+        }
+        return true;
     };
     return DynamicBody;
 })();

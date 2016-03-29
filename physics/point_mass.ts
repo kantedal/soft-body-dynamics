@@ -7,20 +7,28 @@
 ///<reference path="./../app.ts"/>
 
 class PointMass {
+
     private _currentPos: THREE.Vector3;
     private _lastPos: THREE.Vector3;
     private _constraintForce: THREE.Vector3;
     private _mass: number;
-    private _vertexIndex: number
+    private _vertexIndices: number[];
+    private _vertexOffset: THREE.Vector3[];
     private _isAttatchment: boolean;
+    private _renderer: Renderer;
 
-    constructor(position: THREE.Vector3, mass: number, vertex_idx: number){
+    constructor(position: THREE.Vector3, mass: number){
         this._currentPos = position.clone();
         this._lastPos = position.clone();
         this._mass = mass;
         this._constraintForce = new THREE.Vector3(0,0,0);
         this._isAttatchment = false;
-        this._vertexIndex = vertex_idx;
+        this._vertexIndices = [];
+        this._vertexOffset = [];
+    }
+
+    public attatchVertex(index: number, offset: THREE.Vector3){
+        this._vertexIndices.push(index);
     }
 
     get lastPos():THREE.Vector3 {
@@ -59,7 +67,11 @@ class PointMass {
         this._constraintForce = value;
     }
 
-    get vertexIndex():number {
-        return this._vertexIndex;
+    get vertexIndices():number[] {
+        return this._vertexIndices;
+    }
+
+    get vertexOffset():THREE.Vector3[] {
+        return this._vertexOffset;
     }
 }
