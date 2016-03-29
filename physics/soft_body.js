@@ -24,7 +24,7 @@ var SoftBody = (function (_super) {
         this._pointMesh = [];
         var samplingRateX = 5;
         var samplingRateY = 10;
-        var samplingRateZ = 10;
+        var samplingRateZ = 5;
         var body_geometry = bodyMesh.geometry.clone();
         body_geometry.computeBoundingBox();
         var boundingBox = body_geometry.boundingBox;

@@ -41,7 +41,7 @@ class App {
         plane.rotateX(Math.PI/2);
         this._renderer.scene.add( plane );
 
-        var cube_geometry = new THREE.BoxGeometry( 60, 10, 10, 12, 1, 1 );
+        var cube_geometry = new THREE.BoxGeometry( 60, 10, 30, 12, 1, 6 );
         var cube_material = new THREE.MeshPhongMaterial({
             side: THREE.DoubleSide,
             color: 0x444499,

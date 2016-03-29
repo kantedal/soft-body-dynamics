@@ -25,7 +25,7 @@ class SoftBody extends DynamicBody {
 
         var samplingRateX = 5;
         var samplingRateY = 10;
-        var samplingRateZ = 10;
+        var samplingRateZ = 5;
 
         var body_geometry = bodyMesh.geometry.clone();
         body_geometry.computeBoundingBox();
