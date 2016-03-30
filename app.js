@@ -15,18 +15,19 @@ var App = (function () {
         this._clock = new THREE.Clock();
         this._stats = new Stats();
         this._cloth = new Cloth(30, 50, this._renderer);
-        var plane_geometry = new THREE.PlaneGeometry(200, 200, 1, 1);
-        var plane_material = new THREE.MeshBasicMaterial({ color: 0x999999, side: THREE.DoubleSide });
+        var plane_geometry = new THREE.PlaneGeometry(4000, 4000, 1, 1);
+        var plane_material = new THREE.MeshPhongMaterial({ color: 0x999999, side: THREE.DoubleSide });
         var plane = new THREE.Mesh(plane_geometry, plane_material);
         plane.translateY(-30);
         plane.rotateX(Math.PI / 2);
+        plane.receiveShadow = true;
         this._renderer.scene.add(plane);
-        var cube_geometry = new THREE.BoxGeometry(60, 10, 30, 12, 1, 6);
+        var cube_geometry = new THREE.BoxGeometry(100, 5, 5, 20, 1, 1);
         var cube_material = new THREE.MeshPhongMaterial({
             side: THREE.DoubleSide,
-            color: 0x444499,
+            color: 0x664444,
             specular: 0x225522,
-            shininess: 14
+            shininess: 100
         });
         var cube = new THREE.Mesh(cube_geometry, cube_material);
         this._renderer.scene.add(cube);
@@ -64,6 +65,7 @@ var App = (function () {
         requestAnimationFrame(function () { return _this.update(); });
     };
     App.DEVELOPER_MODE = false;
+    App.CAST_SHADOW = true;
     return App;
 })();
 window.onload = function () {

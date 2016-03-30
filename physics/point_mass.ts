@@ -17,7 +17,6 @@ class PointMass {
     private _vertexIndices: number[];
     private _vertexOffset: THREE.Vector3[];
     private _isAttatchment: boolean;
-    private _renderer: Renderer;
 
     constructor(position: THREE.Vector3, mass: number){
         this._currentPos = position.clone();

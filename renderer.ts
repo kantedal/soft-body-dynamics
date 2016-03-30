@@ -1,6 +1,7 @@
 ///<reference path="./threejs/three.d.ts"/>
 ///<reference path="./threejs/three-orbitcontrols.d.ts"/>
 ///<reference path="./threejs/three-editorcontrols.d.ts"/>
+///<reference path="./app.ts"/>
 
 class Renderer {
     private renderer: THREE.WebGLRenderer;
@@ -8,7 +9,7 @@ class Renderer {
     private _camera: THREE.Camera;
     private _cameraBasePosition: THREE.Vector3;
     private _cameraLookAt: THREE.Vector3;
-    private _light: THREE.DirectionalLight;
+    private _light: THREE.SpotLight;
     private _controls: THREE.EditorControls;
 
     constructor(){
@@ -17,27 +18,43 @@ class Renderer {
         this.renderer.setSize(window.innerWidth, window.innerHeight);
         this.renderer.setClearColor(0x000000,0);
         this.renderer.sortObjects = true;
+        this.renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+        this.renderer.shadowMap.enabled = true;
 
         this._scene = new THREE.Scene();
-        this._camera = new THREE.PerspectiveCamera(70, window.innerWidth / window.innerHeight, 1.1, 400);
+        this._scene.fog = new THREE.Fog( 0x808080, 200, 1000 );
+        this._camera = new THREE.PerspectiveCamera(70, window.innerWidth / window.innerHeight, 1.1, 5000);
         this._controls = new THREE.EditorControls( this._camera );
 
-        this._camera.position.set(0,-15,-70);
-        this._cameraLookAt = new THREE.Vector3(0,-20,0);
+        this._camera.position.set(0,15,-70);
+        this._cameraLookAt = new THREE.Vector3(0,0,0);
         this._camera.lookAt(this._cameraLookAt);
 
         this._cameraBasePosition = new THREE.Vector3();
         this._cameraBasePosition.copy(this._camera.position);
 
-        this._light = new THREE.DirectionalLight( 0xffeeee, 0.85 );
-        this._light.position.set( 1, 0.3, 0 );
+        //this._light = new THREE.DirectionalLight( 0xffeeee, 1.0 );
+        //this._light.position.set( 1, 1, 0 );
+        //this._light.castShadow = true;
+        //this._light.shadowDarkness = 0.5;
+        //this._scene.add( this._light );
+
+        this._light = new THREE.SpotLight( 0xffffff );
+        this._light.position.set( 150, 50, 200);
+        this._light.decay = 0.1;
+        this._light.exponent = 0.2;
         this._scene.add( this._light );
+        this._light.parent = this._camera;
 
-        var spotLight = new THREE.SpotLight( 0xffffff );
-        spotLight.position.set( 250, 100, -250 );
-        this._scene.add( spotLight );
+        if(App.CAST_SHADOW){
+            this._light.castShadow = true;
+            this._light.shadow.mapSize.width = 1024;
+            this._light.shadow.mapSize.height = 1024;
+            this._light.shadowDarkness = 0.5;
+        }
 
-        var ambientLight = new THREE.AmbientLight( 0x707070 ); // soft white light
+
+        var ambientLight = new THREE.AmbientLight( 0x505050 ); // soft white light
         this.scene.add( ambientLight );
 
         var container = document.getElementById( 'content' );
@@ -47,7 +64,6 @@ class Renderer {
     }
 
     render() {
-
         this.renderer.render(this._scene,this._camera);
     }
 

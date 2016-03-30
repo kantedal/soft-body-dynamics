@@ -21,13 +21,11 @@ var CameraSelector = (function () {
                 }
                 _this._selectedPointMass.isAttatchment = true;
                 _this._isDragging = true;
-                _this._dragAllowed = false;
             }
         };
         this.mouseUp = function (ev) {
             if (_this._isDragging) {
                 _this._isDragging = false;
-                _this._dragAllowed = false;
                 if (_this._guiHandler.selectionMode == GuiHandler.MOVE_CLOTH)
                     _this._selectedPointMass.isAttatchment = false;
                 _this._renderer.controls.enabled = true;
@@ -51,7 +49,7 @@ var CameraSelector = (function () {
         this._dragPosition = new THREE.Vector3(0, 0, 0);
         this._raycasterSelector = new THREE.Mesh(new THREE.SphereGeometry(1, 8, 8), new THREE.MeshBasicMaterial({ color: 0x000000 }));
         this._renderer.scene.add(this._raycasterSelector);
-        this._raycasterSelectorPlane = new THREE.Mesh(new THREE.PlaneGeometry(50, 50, 1, 1), new THREE.MeshLambertMaterial({ color: 0x444444, side: THREE.DoubleSide, transparent: true, opacity: 0.0 }));
+        this._raycasterSelectorPlane = new THREE.Mesh(new THREE.PlaneGeometry(1000, 1000, 1, 1), new THREE.MeshLambertMaterial({ color: 0x444444, side: THREE.DoubleSide, transparent: true, opacity: 0.0 }));
         this._renderer.scene.add(this._raycasterSelectorPlane);
         this._raycasterSelectorPlane.rotation.copy(this._renderer.camera.rotation);
         window.addEventListener("mousedown", this.mouseDown);

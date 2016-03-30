@@ -17,10 +17,12 @@ class SoftBody extends DynamicBody {
 
         this._renderer = renderer;
         this._bodyMesh = bodyMesh;
+        this._bodyMesh.castShadow = true;
+        this._bodyMesh.receiveShadow = false;
         this._pointMesh = [];
 
         var samplingRateX = 5;
-        var samplingRateY = 10;
+        var samplingRateY = 5;
         var samplingRateZ = 5;
 
         var body_geometry = bodyMesh.geometry.clone();
@@ -39,7 +41,7 @@ class SoftBody extends DynamicBody {
                         });
                         var point = new THREE.Mesh( geometry.clone(), material );
                         point.position.set(x, y, z);
-                        this._renderer.scene.add(point);
+                        //this._renderer.scene.add(point);
                         this._pointMesh.push(point);
 
                         this._points.push(new PointMass(new THREE.Vector3(x,y,z),1));
@@ -57,9 +59,9 @@ class SoftBody extends DynamicBody {
                 if(j != i){
                     var distance = this._points[i].currentPos.distanceTo(this._points[j].currentPos);
                     if(distance <= max_distance_structure){
-                        this._constraints.push(new BendConstraint(distance, 0.3, this._points[i], this._points[j], this._renderer));
+                        this._constraints.push(new BendConstraint(distance, 0.8, this._points[i], this._points[j], this._renderer));
                     }else if(distance <= max_distance_bend){
-                        this._constraints.push(new BendConstraint(distance, 0.07, this._points[i], this._points[j], this._renderer));
+                        this._constraints.push(new BendConstraint(distance, 0.4, this._points[i], this._points[j], this._renderer));
                     }
                 }
             }

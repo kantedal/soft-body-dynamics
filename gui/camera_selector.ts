@@ -35,7 +35,7 @@ class CameraSelector {
         this._renderer.scene.add( this._raycasterSelector );
 
         this._raycasterSelectorPlane = new THREE.Mesh(
-            new THREE.PlaneGeometry( 50, 50, 1, 1 ),
+            new THREE.PlaneGeometry( 1000, 1000, 1, 1 ),
             new THREE.MeshLambertMaterial({color: 0x444444, side: THREE.DoubleSide, transparent: true, opacity: 0.0})
         );
         this._renderer.scene.add(this._raycasterSelectorPlane);
@@ -94,14 +94,12 @@ class CameraSelector {
             }
             this._selectedPointMass.isAttatchment = true;
             this._isDragging = true;
-            this._dragAllowed = false;
         }
     }
 
     private mouseUp = (ev: MouseEvent) => {
         if(this._isDragging){
             this._isDragging = false;
-            this._dragAllowed = false;
 
             if(this._guiHandler.selectionMode == GuiHandler.MOVE_CLOTH)
                 this._selectedPointMass.isAttatchment = false;
