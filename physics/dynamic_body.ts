@@ -8,6 +8,7 @@
 ///<reference path="./../app.ts"/>
 ///<reference path="constraints/structure_constraint.ts"/>
 ///<reference path="constraints/bend_constraint.ts"/>
+///<reference path="constraints/friction_constraint.ts"/>
 ///<reference path="constraints/height_collision_constraint.ts"/>
 ///<reference path="./../threejs/three.d.ts"/>
 
@@ -35,7 +36,7 @@ abstract class DynamicBody {
         this._dampingFactor = 0.0;
     }
 
-    public update(time: number, delta: number){
+    public update(time: number, delta: number) {
         for (var constraint of this._constraints)
             constraint.solve();
 

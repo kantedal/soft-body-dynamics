@@ -7,6 +7,8 @@
 ///<reference path="./constraint.ts"/>
 
 class BendConstraint implements Constraint {
+    shouldRemove:boolean = false;
+
     private _renderer: Renderer;
     private _restingDistance: number = 1;
     private _tearingDistance: number = 2;
@@ -33,8 +35,6 @@ class BendConstraint implements Constraint {
         offset.multiplyScalar(this._stiffness);
 
         var multiplier = 0.5;
-        if (this._pointMassA.isAttatchment || this._pointMassB.isAttatchment)
-            multiplier = 1;
 
         if (!this._pointMassA.isAttatchment)
             this._pointMassA.currentPos.add(offset.clone().multiplyScalar(multiplier));

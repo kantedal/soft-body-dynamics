@@ -7,6 +7,7 @@
 ///<reference path="./../app.ts"/>
 ///<reference path="constraints/structure_constraint.ts"/>
 ///<reference path="constraints/bend_constraint.ts"/>
+///<reference path="constraints/friction_constraint.ts"/>
 ///<reference path="constraints/height_collision_constraint.ts"/>
 ///<reference path="./../threejs/three.d.ts"/>
 var DynamicBody = (function () {

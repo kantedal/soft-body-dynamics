@@ -7,6 +7,8 @@
 ///<reference path="./../../renderer.ts"/>
 
 class StructureConstraint implements Constraint {
+    shouldRemove:boolean = false;
+
     private _renderer: Renderer;
     private _restingDistance: number = 1;
     private _tearingDistance: number = 2;

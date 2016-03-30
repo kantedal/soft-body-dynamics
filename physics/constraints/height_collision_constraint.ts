@@ -7,6 +7,8 @@
 ///<reference path="./../../renderer.ts"/>
 
 class HeightCollisionConstraint implements Constraint {
+    shouldRemove:boolean = false;
+
     private _collisionHeight: number;
     private _collisionPoint: PointMass;
 
@@ -19,6 +21,9 @@ class HeightCollisionConstraint implements Constraint {
         if(this._collisionPoint.currentPos.y <= this._collisionHeight) {
             var distance = this._collisionPoint.currentPos.y - this._collisionHeight;
             this._collisionPoint.currentPos.y += -distance * 0.5;
+            this._collisionPoint.isColliding = true;
         }
+        else
+            this._collisionPoint.isColliding = false;
     }
 }

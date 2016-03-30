@@ -6,6 +6,7 @@
 ///<reference path="./constraint.ts"/>
 var BendConstraint = (function () {
     function BendConstraint(restingDistance, stiffness, pointMassA, pointMassB, renderer) {
+        this.shouldRemove = false;
         this._restingDistance = 1;
         this._tearingDistance = 2;
         this._renderer = renderer;
@@ -21,8 +22,6 @@ var BendConstraint = (function () {
         var offset = delta.multiplyScalar(length - this._restingDistance);
         offset.multiplyScalar(this._stiffness);
         var multiplier = 0.5;
-        if (this._pointMassA.isAttatchment || this._pointMassB.isAttatchment)
-            multiplier = 1;
         if (!this._pointMassA.isAttatchment)
             this._pointMassA.currentPos.add(offset.clone().multiplyScalar(multiplier));
         if (!this._pointMassB.isAttatchment)

@@ -17,6 +17,7 @@ class PointMass {
     private _vertexIndices: number[];
     private _vertexOffset: THREE.Vector3[];
     private _isAttatchment: boolean;
+    private _isColliding: boolean;
 
     constructor(position: THREE.Vector3, mass: number){
         this._currentPos = position.clone();
@@ -24,6 +25,7 @@ class PointMass {
         this._mass = mass;
         this._constraintForce = new THREE.Vector3(0,0,0);
         this._isAttatchment = false;
+        this._isColliding = false;
         this._vertexIndices = [];
         this._vertexOffset = [];
     }
@@ -79,13 +81,24 @@ class PointMass {
     get velocity():THREE.Vector3 {
         return this._velocity;
     }
+
     set velocity(value:THREE.Vector3) {
         this._velocity = value;
     }
+
     get acceleration():THREE.Vector3 {
         return this._acceleration;
     }
+
     set acceleration(value:THREE.Vector3) {
         this._acceleration = value;
+    }
+
+    get isColliding():boolean {
+        return this._isColliding;
+    }
+
+    set isColliding(value:boolean) {
+        this._isColliding = value;
     }
 }

@@ -6,6 +6,7 @@
 ///<reference path="./../../renderer.ts"/>
 var StructureConstraint = (function () {
     function StructureConstraint(restingDistance, pointMassA, pointMassB, renderer) {
+        this.shouldRemove = false;
         this._restingDistance = 1;
         this._tearingDistance = 2;
         this._renderer = renderer;

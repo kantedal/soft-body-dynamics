@@ -11,6 +11,7 @@ var PointMass = (function () {
         this._mass = mass;
         this._constraintForce = new THREE.Vector3(0, 0, 0);
         this._isAttatchment = false;
+        this._isColliding = false;
         this._vertexIndices = [];
         this._vertexOffset = [];
     }
@@ -94,6 +95,16 @@ var PointMass = (function () {
         },
         set: function (value) {
             this._acceleration = value;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(PointMass.prototype, "isColliding", {
+        get: function () {
+            return this._isColliding;
+        },
+        set: function (value) {
+            this._isColliding = value;
         },
         enumerable: true,
         configurable: true
