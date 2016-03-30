@@ -62,7 +62,7 @@ class SoftBody extends DynamicBody {
                 }
             }
             this._constraints.push(new HeightCollisionConstraint(-30, this._points[i]));
-            this._constraints.push(new FrictionConstraint(this._points[i]));
+           // this._constraints.push(new FrictionConstraint(this._points[i]));
         }
 
         for (var i = 0; i < this._bodyMesh.geometry.vertices.length; i++) {
