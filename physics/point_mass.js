@@ -6,8 +6,9 @@
 ///<reference path="./../app.ts"/>
 var PointMass = (function () {
     function PointMass(position, mass) {
-        this._currentPos = position.clone();
-        this._lastPos = position.clone();
+        this._nextPosition = position.clone();
+        this._position = position.clone();
+        this._velocity = new THREE.Vector3(0, 0, 0);
         this._mass = mass;
         this._constraintForce = new THREE.Vector3(0, 0, 0);
         this._isAttatchment = false;
@@ -18,22 +19,22 @@ var PointMass = (function () {
     PointMass.prototype.attatchVertex = function (index, offset) {
         this._vertexIndices.push(index);
     };
-    Object.defineProperty(PointMass.prototype, "lastPos", {
+    Object.defineProperty(PointMass.prototype, "position", {
         get: function () {
-            return this._lastPos;
+            return this._position;
         },
         set: function (value) {
-            this._lastPos = value;
+            this._position = value;
         },
         enumerable: true,
         configurable: true
     });
-    Object.defineProperty(PointMass.prototype, "currentPos", {
+    Object.defineProperty(PointMass.prototype, "nextPosition", {
         get: function () {
-            return this._currentPos;
+            return this._nextPosition;
         },
         set: function (value) {
-            this._currentPos = value;
+            this._nextPosition = value;
         },
         enumerable: true,
         configurable: true

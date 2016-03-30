@@ -7,8 +7,8 @@
 ///<reference path="./../app.ts"/>
 
 class PointMass {
-    private _currentPos: THREE.Vector3;
-    private _lastPos: THREE.Vector3;
+    private _nextPosition: THREE.Vector3;
+    private _position: THREE.Vector3;
     private _velocity: THREE.Vector3;
     private _acceleration: THREE.Vector3;
 
@@ -20,8 +20,9 @@ class PointMass {
     private _isColliding: boolean;
 
     constructor(position: THREE.Vector3, mass: number){
-        this._currentPos = position.clone();
-        this._lastPos = position.clone();
+        this._nextPosition = position.clone();
+        this._position = position.clone();
+        this._velocity = new THREE.Vector3(0,0,0);
         this._mass = mass;
         this._constraintForce = new THREE.Vector3(0,0,0);
         this._isAttatchment = false;
@@ -34,20 +35,20 @@ class PointMass {
         this._vertexIndices.push(index);
     }
 
-    get lastPos():THREE.Vector3 {
-        return this._lastPos;
+    get position():THREE.Vector3 {
+        return this._position;
     }
 
-    set lastPos(value:THREE.Vector3) {
-        this._lastPos = value;
+    set position(value:THREE.Vector3) {
+        this._position = value;
     }
 
-    get currentPos():THREE.Vector3 {
-        return this._currentPos;
+    get nextPosition():THREE.Vector3 {
+        return this._nextPosition;
     }
 
-    set currentPos(value:THREE.Vector3) {
-        this._currentPos = value;
+    set nextPosition(value:THREE.Vector3) {
+        this._nextPosition = value;
     }
 
     get mass():number {

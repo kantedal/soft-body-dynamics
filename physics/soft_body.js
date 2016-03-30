@@ -3,7 +3,6 @@
  */
 ///<reference path="./point_mass.ts"/>
 ///<reference path="./dynamic_body.ts"/>
-///<reference path="./integration.ts"/>
 ///<reference path="./../renderer.ts"/>
 ///<reference path="./../app.ts"/>
 ///<reference path="constraints/structure_constraint.ts"/>
@@ -16,8 +15,8 @@ var __extends = (this && this.__extends) || function (d, b) {
 };
 var SoftBody = (function (_super) {
     __extends(SoftBody, _super);
-    function SoftBody(bodyMesh, integration, renderer) {
-        _super.call(this, bodyMesh, integration);
+    function SoftBody(bodyMesh, renderer) {
+        _super.call(this, bodyMesh);
         this._renderer = renderer;
         var samplingRateX = 5;
         var samplingRateY = 5;
@@ -47,26 +46,27 @@ var SoftBody = (function (_super) {
         for (var i = 0; i < this._points.length; i++) {
             for (var j = 0; j < this._points.length; j++) {
                 if (j != i) {
-                    var distance = this._points[i].currentPos.distanceTo(this._points[j].currentPos);
+                    var distance = this._points[i].position.distanceTo(this._points[j].position);
                     if (distance <= max_distance_structure) {
-                        this._constraints.push(new BendConstraint(distance, 0.8, this._points[i], this._points[j], this._renderer));
+                        this._constraints.push(new BendConstraint(distance, 0.7, this._points[i], this._points[j], this._renderer));
                     }
                     else if (distance <= max_distance_bend) {
-                        this._constraints.push(new BendConstraint(distance, 0.4, this._points[i], this._points[j], this._renderer));
+                        this._constraints.push(new BendConstraint(distance, 0.3, this._points[i], this._points[j], this._renderer));
                     }
                 }
             }
             this._constraints.push(new HeightCollisionConstraint(-30, this._points[i]));
+            this._velocityConstraints.push(new FrictionConstraint(this._points[i]));
         }
         for (var i = 0; i < this._bodyMesh.geometry.vertices.length; i++) {
             var vert_pos = this._bodyMesh.geometry.vertices[i].clone();
             vert_pos.applyMatrix4(this._bodyMesh.matrixWorld);
             var closestIdx = 0;
             for (var j = 1; j < this._points.length; j++) {
-                if (vert_pos.distanceTo(this._points[j].currentPos) < vert_pos.distanceTo(this._points[closestIdx].currentPos))
+                if (vert_pos.distanceTo(this._points[j].position) < vert_pos.distanceTo(this._points[closestIdx].position))
                     closestIdx = j;
             }
-            this._points[closestIdx].attatchVertex(i, this._points[closestIdx].currentPos.clone().sub(vert_pos));
+            this._points[closestIdx].attatchVertex(i, this._points[closestIdx].position.clone().sub(vert_pos));
         }
     }
     Object.defineProperty(SoftBody.prototype, "bodyMesh", {

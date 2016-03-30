@@ -18,26 +18,14 @@ class FrictionConstraint implements Constraint {
 
     constructor(pointMass: PointMass){
         this._pointMass = pointMass;
-        this._connectionPoint = this._pointMass.currentPos.clone();
+        this._connectionPoint = this._pointMass.position.clone();
     }
 
 
     public solve() {
         if(this._pointMass.isColliding) {
-            var pointPoistion = this._pointMass.currentPos.clone();
-            pointPoistion.setY(0);
-
-            var delta = pointPoistion.clone().sub(this._connectionPoint);
-            delta.normalize();
-            var length = pointPoistion.distanceTo(this._connectionPoint);
-            var offset = delta.multiplyScalar(length);
-
-            if (length > this._breakingDistance)
-                this.shouldRemove = true;
-
-            console.log(offset);
-
-            this._pointMass.currentPos.add(offset.clone().multiplyScalar(0.5));
+            this._pointMass.velocity.setX(this._pointMass.velocity.x * 0.7);
+            this._pointMass.velocity.setZ(this._pointMass.velocity.z * 0.7);
         }
     }
 

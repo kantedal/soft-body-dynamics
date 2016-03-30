@@ -107,13 +107,13 @@ var Cloth = (function () {
                 if (!point.isAttatchment) {
                     //point.constraintForce = this._windDirection.multiplyScalar(this._windDirection.dot())
                     var acceleration = this._gravity.clone().add(point.constraintForce);
-                    var velocity = point.currentPos.clone().sub(point.lastPos);
-                    point.lastPos = point.currentPos.clone();
-                    point.currentPos = point.currentPos.clone().add(velocity.multiplyScalar(1.0 - this._dampingFactor)).add(acceleration.multiplyScalar(delta * delta));
+                    var velocity = point.position.clone().sub(point.position);
+                    point.position = point.position.clone();
+                    point.position = point.position.clone().add(velocity.multiplyScalar(1.0 - this._dampingFactor)).add(acceleration.multiplyScalar(delta * delta));
                 }
                 else {
                 }
-                this._clothMesh.geometry.vertices[point.vertexIndex].copy(point.currentPos);
+                this._clothMesh.geometry.vertices[point.vertexIndex].copy(point.position);
             }
             this._clothMesh.geometry.verticesNeedUpdate = true;
             this._clothMesh.geometry.normalsNeedUpdate = true;

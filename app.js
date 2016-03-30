@@ -2,7 +2,6 @@
  * Created by filles-dator on 2016-03-26.
  */
 ///<reference path="./renderer.ts"/>
-///<reference path="./physics/integration.ts"/>
 ///<reference path="./physics/cloth.ts"/>
 ///<reference path="./physics/soft_body.ts"/>
 ///<reference path="./gui/gui_handler.ts"/>
@@ -15,7 +14,6 @@ var App = (function () {
         this._renderer = new Renderer();
         this._clock = new THREE.Clock();
         this._stats = new Stats();
-        this._integration = new Integration(Integration.VERLET);
         this._cloth = new Cloth(30, 50, this._renderer);
         var plane_geometry = new THREE.PlaneGeometry(4000, 4000, 1, 1);
         var plane_material = new THREE.MeshPhongMaterial({ color: 0x999999, side: THREE.DoubleSide });
@@ -24,7 +22,7 @@ var App = (function () {
         plane.rotateX(Math.PI / 2);
         plane.receiveShadow = true;
         this._renderer.scene.add(plane);
-        var cube_geometry = new THREE.BoxGeometry(100, 5, 5, 20, 1, 1);
+        var cube_geometry = new THREE.BoxGeometry(150, 5, 5, 30, 1, 1);
         var cube_material = new THREE.MeshPhongMaterial({
             side: THREE.DoubleSide,
             color: 0x664444,

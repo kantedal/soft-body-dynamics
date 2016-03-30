@@ -11,9 +11,9 @@ var HeightCollisionConstraint = (function () {
         this._collisionPoint = collisionPoint;
     }
     HeightCollisionConstraint.prototype.solve = function () {
-        if (this._collisionPoint.currentPos.y <= this._collisionHeight) {
-            var distance = this._collisionPoint.currentPos.y - this._collisionHeight;
-            this._collisionPoint.currentPos.y += -distance * 0.5;
+        if (this._collisionPoint.position.y <= this._collisionHeight) {
+            var distance = this._collisionPoint.position.y - this._collisionHeight;
+            this._collisionPoint.position.y += -distance * 0.5;
             this._collisionPoint.isColliding = true;
         }
         else

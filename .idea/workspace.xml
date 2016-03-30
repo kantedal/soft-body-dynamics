@@ -2,8 +2,44 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8059b0cc-bffe-41e5-a608-e31a1c8f3c06" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/physics/presets/soft_box.ts" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/physics/integration.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/physics/integration.js.map" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/physics/integration.ts" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app.js" afterPath="$PROJECT_DIR$/app.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app.ts" afterPath="$PROJECT_DIR$/app.ts" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/gui/camera_selector.js" afterPath="$PROJECT_DIR$/gui/camera_selector.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/gui/camera_selector.js.map" afterPath="$PROJECT_DIR$/gui/camera_selector.js.map" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/gui/camera_selector.ts" afterPath="$PROJECT_DIR$/gui/camera_selector.ts" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/index.html" afterPath="$PROJECT_DIR$/index.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/physics/cloth.js" afterPath="$PROJECT_DIR$/physics/cloth.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/physics/cloth.js.map" afterPath="$PROJECT_DIR$/physics/cloth.js.map" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/physics/cloth.ts" afterPath="$PROJECT_DIR$/physics/cloth.ts" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/physics/constraints/bend_constraint.js" afterPath="$PROJECT_DIR$/physics/constraints/bend_constraint.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/physics/constraints/bend_constraint.js.map" afterPath="$PROJECT_DIR$/physics/constraints/bend_constraint.js.map" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/physics/constraints/bend_constraint.ts" afterPath="$PROJECT_DIR$/physics/constraints/bend_constraint.ts" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/physics/constraints/friction_constraint.js" afterPath="$PROJECT_DIR$/physics/constraints/friction_constraint.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/physics/constraints/friction_constraint.js.map" afterPath="$PROJECT_DIR$/physics/constraints/friction_constraint.js.map" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/physics/constraints/friction_constraint.ts" afterPath="$PROJECT_DIR$/physics/constraints/friction_constraint.ts" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/physics/constraints/height_collision_constraint.js" afterPath="$PROJECT_DIR$/physics/constraints/height_collision_constraint.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/physics/constraints/height_collision_constraint.js.map" afterPath="$PROJECT_DIR$/physics/constraints/height_collision_constraint.js.map" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/physics/constraints/height_collision_constraint.ts" afterPath="$PROJECT_DIR$/physics/constraints/height_collision_constraint.ts" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/physics/constraints/structure_constraint.js" afterPath="$PROJECT_DIR$/physics/constraints/structure_constraint.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/physics/constraints/structure_constraint.js.map" afterPath="$PROJECT_DIR$/physics/constraints/structure_constraint.js.map" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/physics/constraints/structure_constraint.ts" afterPath="$PROJECT_DIR$/physics/constraints/structure_constraint.ts" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/physics/dynamic_body.js" afterPath="$PROJECT_DIR$/physics/dynamic_body.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/physics/dynamic_body.js.map" afterPath="$PROJECT_DIR$/physics/dynamic_body.js.map" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/physics/dynamic_body.ts" afterPath="$PROJECT_DIR$/physics/dynamic_body.ts" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/physics/point_mass.js" afterPath="$PROJECT_DIR$/physics/point_mass.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/physics/point_mass.js.map" afterPath="$PROJECT_DIR$/physics/point_mass.js.map" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/physics/point_mass.ts" afterPath="$PROJECT_DIR$/physics/point_mass.ts" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/physics/soft_body.js" afterPath="$PROJECT_DIR$/physics/soft_body.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/physics/soft_body.js.map" afterPath="$PROJECT_DIR$/physics/soft_body.js.map" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/physics/soft_body.ts" afterPath="$PROJECT_DIR$/physics/soft_body.ts" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/renderer.js" afterPath="$PROJECT_DIR$/renderer.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/renderer.js.map" afterPath="$PROJECT_DIR$/renderer.js.map" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/renderer.ts" afterPath="$PROJECT_DIR$/renderer.ts" />
     </list>
     <ignored path="soft-body-dynamics.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -26,11 +62,11 @@
     <splitter split-orientation="horizontal" split-proportion="0.5">
       <split-first>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-          <file leaf-file-name="app.ts" pinned="false" current-in-tab="false">
+          <file leaf-file-name="app.ts" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/app.ts">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="-44.074074">
-                  <caret line="85" column="64" selection-start-line="85" selection-start-column="64" selection-end-line="85" selection-end-column="64" />
+                <state vertical-scroll-proportion="0.02855686">
+                  <caret line="4" column="36" selection-start-line="4" selection-start-column="36" selection-end-line="4" selection-end-column="36" />
                   <folding />
                 </state>
               </provider>
@@ -39,8 +75,8 @@
           <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/index.html">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="3.4285715">
-                  <caret line="4" column="36" selection-start-line="4" selection-start-column="36" selection-end-line="4" selection-end-column="36" />
+                <state vertical-scroll-proportion="-14.0">
+                  <caret line="22" column="49" selection-start-line="22" selection-start-column="49" selection-end-line="22" selection-end-column="49" />
                   <folding>
                     <element signature="n#style#0;n#body#0;n#html#0;n#!!top" expanded="true" />
                   </folding>
@@ -52,20 +88,10 @@
             <entry file="file://$PROJECT_DIR$/physics/constraints/height_collision_constraint.ts">
               <provider selected="true" editor-type-id="text-editor">
                 <state vertical-scroll-proportion="0.0">
-                  <caret line="26" column="52" selection-start-line="26" selection-start-column="52" selection-end-line="26" selection-end-column="52" />
+                  <caret line="22" column="41" selection-start-line="22" selection-start-column="41" selection-end-line="22" selection-end-column="41" />
                   <folding>
                     <element signature="n#!!doc;n#HeightCollisionConstraint#0" expanded="false" />
                   </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="structure_constraint.ts" pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/physics/constraints/structure_constraint.ts">
-              <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.0">
-                  <caret line="0" column="3" selection-start-line="0" selection-start-column="3" selection-end-line="0" selection-end-column="3" />
-                  <folding />
                 </state>
               </provider>
             </entry>
@@ -74,7 +100,7 @@
             <entry file="file://$PROJECT_DIR$/physics/constraints/bend_constraint.ts">
               <provider selected="true" editor-type-id="text-editor">
                 <state vertical-scroll-proportion="0.0">
-                  <caret line="10" column="0" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
+                  <caret line="28" column="20" selection-start-line="28" selection-start-column="20" selection-end-line="28" selection-end-column="20" />
                   <folding />
                 </state>
               </provider>
@@ -83,8 +109,8 @@
           <file leaf-file-name="dynamic_body.ts" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/physics/dynamic_body.ts">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.0">
-                  <caret line="57" column="13" selection-start-line="57" selection-start-column="13" selection-end-line="57" selection-end-column="13" />
+                <state vertical-scroll-proportion="-15.037037">
+                  <caret line="31" column="45" selection-start-line="31" selection-start-column="45" selection-end-line="31" selection-end-column="45" />
                   <folding>
                     <element signature="n#!!doc;n#DynamicBody#0" expanded="false" />
                   </folding>
@@ -96,7 +122,7 @@
             <entry file="file://$PROJECT_DIR$/physics/point_mass.ts">
               <provider selected="true" editor-type-id="text-editor">
                 <state vertical-scroll-proportion="0.0">
-                  <caret line="27" column="34" selection-start-line="27" selection-start-column="34" selection-end-line="27" selection-end-column="34" />
+                  <caret line="61" column="38" selection-start-line="61" selection-start-column="38" selection-end-line="61" selection-end-column="38" />
                   <folding />
                 </state>
               </provider>
@@ -106,8 +132,32 @@
             <entry file="file://$PROJECT_DIR$/gui/camera_selector.ts">
               <provider selected="true" editor-type-id="text-editor">
                 <state vertical-scroll-proportion="0.0">
-                  <caret line="55" column="99" selection-start-line="55" selection-start-column="99" selection-end-line="55" selection-end-column="99" />
+                  <caret line="103" column="44" selection-start-line="103" selection-start-column="36" selection-end-line="103" selection-end-column="44" />
                   <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="renderer.ts" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/renderer.ts">
+              <provider selected="true" editor-type-id="text-editor">
+                <state vertical-scroll-proportion="0.0">
+                  <caret line="15" column="72" selection-start-line="15" selection-start-column="72" selection-end-line="15" selection-end-column="72" />
+                  <folding>
+                    <element signature="n#!!doc" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="soft_box.ts" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/physics/presets/soft_box.ts">
+              <provider selected="true" editor-type-id="text-editor">
+                <state vertical-scroll-proportion="0.0">
+                  <caret line="8" column="1" selection-start-line="8" selection-start-column="1" selection-end-line="8" selection-end-column="1" />
+                  <folding>
+                    <element signature="n#!!doc;n#SoftBox#0" expanded="false" />
+                  </folding>
                 </state>
               </provider>
             </entry>
@@ -116,17 +166,7 @@
             <entry file="file://$PROJECT_DIR$/physics/constraints/friction_constraint.ts">
               <provider selected="true" editor-type-id="text-editor">
                 <state vertical-scroll-proportion="0.0">
-                  <caret line="22" column="0" selection-start-line="21" selection-start-column="5" selection-end-line="22" selection-end-column="0" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="constraint.ts" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/physics/constraints/constraint.ts">
-              <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.0">
-                  <caret line="7" column="1" selection-start-line="7" selection-start-column="1" selection-end-line="7" selection-end-column="1" />
+                  <caret line="27" column="74" selection-start-line="27" selection-start-column="74" selection-end-line="27" selection-end-column="74" />
                   <folding />
                 </state>
               </provider>
@@ -136,23 +176,11 @@
       </split-first>
       <split-second>
         <leaf>
-          <file leaf-file-name="integration.ts" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/physics/integration.ts">
-              <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.0">
-                  <caret line="33" column="46" selection-start-line="33" selection-start-column="46" selection-end-line="33" selection-end-column="46" />
-                  <folding>
-                    <element signature="n#!!doc;n#Integration#0" expanded="false" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
           <file leaf-file-name="soft_body.ts" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/physics/soft_body.ts">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.45070422">
-                  <caret line="64" column="13" selection-start-line="64" selection-start-column="13" selection-end-line="64" selection-end-column="13" />
+                <state vertical-scroll-proportion="0.1056338">
+                  <caret line="15" column="22" selection-start-line="15" selection-start-column="22" selection-end-line="15" selection-end-column="22" />
                   <folding />
                 </state>
               </provider>
@@ -179,22 +207,23 @@
         <option value="$PROJECT_DIR$/physics/cloth.ts" />
         <option value="$PROJECT_DIR$/threejs/editorcontrols.js" />
         <option value="$PROJECT_DIR$/threejs/trackball.js" />
-        <option value="$PROJECT_DIR$/renderer.ts" />
         <option value="$PROJECT_DIR$/style/style.css" />
         <option value="$PROJECT_DIR$/physics/integration/integration.ts" />
         <option value="$PROJECT_DIR$/physics/integration.ts" />
-        <option value="$PROJECT_DIR$/app.ts" />
         <option value="$PROJECT_DIR$/gui/gui_handler.ts" />
-        <option value="$PROJECT_DIR$/gui/camera_selector.ts" />
         <option value="$PROJECT_DIR$/physics/constraints/constraint.ts" />
-        <option value="$PROJECT_DIR$/physics/constraints/bend_constraint.ts" />
         <option value="$PROJECT_DIR$/physics/constraints/structure_constraint.ts" />
-        <option value="$PROJECT_DIR$/physics/point_mass.ts" />
         <option value="$PROJECT_DIR$/physics/constraints/height_collision_constraint.ts" />
-        <option value="$PROJECT_DIR$/index.html" />
-        <option value="$PROJECT_DIR$/physics/dynamic_body.ts" />
+        <option value="$PROJECT_DIR$/physics/constraints/bend_constraint.ts" />
+        <option value="$PROJECT_DIR$/gui/camera_selector.ts" />
+        <option value="$PROJECT_DIR$/physics/point_mass.ts" />
         <option value="$PROJECT_DIR$/physics/constraints/friction_constraint.ts" />
+        <option value="$PROJECT_DIR$/renderer.ts" />
+        <option value="$PROJECT_DIR$/physics/presets/soft_box.ts" />
         <option value="$PROJECT_DIR$/physics/soft_body.ts" />
+        <option value="$PROJECT_DIR$/physics/dynamic_body.ts" />
+        <option value="$PROJECT_DIR$/index.html" />
+        <option value="$PROJECT_DIR$/app.ts" />
       </list>
     </option>
   </component>
@@ -294,7 +323,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="constraints" />
+              <option name="myItemId" value="presets" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -397,10 +426,11 @@
     <frame x="1" y="23" width="2332" height="2085" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.09090909" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.09090909" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="TypeScript Compiler" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32901296" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3298611" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -412,7 +442,6 @@
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
     <layout-to-restore>
@@ -741,28 +770,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/renderer.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="62" column="72" selection-start-line="62" selection-start-column="72" selection-end-line="63" selection-end-column="5" />
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/style/style.css">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-11.946667">
           <caret line="64" column="11" selection-start-line="64" selection-start-column="11" selection-end-line="64" selection-end-column="11" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-44.074074">
-          <caret line="85" column="64" selection-start-line="85" selection-start-column="64" selection-end-line="85" selection-end-column="64" />
           <folding />
         </state>
       </provider>
@@ -783,78 +794,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/physics/point_mass.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="27" column="34" selection-start-line="27" selection-start-column="34" selection-end-line="27" selection-end-column="34" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/gui/camera_selector.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="55" column="99" selection-start-line="55" selection-start-column="99" selection-end-line="55" selection-end-column="99" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/physics/constraints/height_collision_constraint.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="26" column="52" selection-start-line="26" selection-start-column="52" selection-end-line="26" selection-end-column="52" />
-          <folding>
-            <element signature="n#!!doc;n#HeightCollisionConstraint#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="3.4285715">
-          <caret line="4" column="36" selection-start-line="4" selection-start-column="36" selection-end-line="4" selection-end-column="36" />
-          <folding>
-            <element signature="n#style#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/physics/dynamic_body.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="57" column="13" selection-start-line="57" selection-start-column="13" selection-end-line="57" selection-end-column="13" />
-          <folding>
-            <element signature="n#!!doc;n#DynamicBody#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/physics/integration.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="33" column="46" selection-start-line="33" selection-start-column="46" selection-end-line="33" selection-end-column="46" />
-          <folding>
-            <element signature="n#!!doc;n#Integration#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/physics/constraints/friction_constraint.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="22" column="0" selection-start-line="21" selection-start-column="5" selection-end-line="22" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/physics/constraints/bend_constraint.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="10" column="0" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/physics/constraints/structure_constraint.ts">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -863,10 +802,100 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/physics/constraints/height_collision_constraint.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="22" column="41" selection-start-line="22" selection-start-column="41" selection-end-line="22" selection-end-column="41" />
+          <folding>
+            <element signature="n#!!doc;n#HeightCollisionConstraint#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/gui/camera_selector.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="103" column="44" selection-start-line="103" selection-start-column="36" selection-end-line="103" selection-end-column="44" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/physics/point_mass.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="61" column="38" selection-start-line="61" selection-start-column="38" selection-end-line="61" selection-end-column="38" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/physics/constraints/bend_constraint.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="28" column="20" selection-start-line="28" selection-start-column="20" selection-end-line="28" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/physics/constraints/friction_constraint.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="27" column="74" selection-start-line="27" selection-start-column="74" selection-end-line="27" selection-end-column="74" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/renderer.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="15" column="72" selection-start-line="15" selection-start-column="72" selection-end-line="15" selection-end-column="72" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/physics/soft_body.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.45070422">
-          <caret line="64" column="13" selection-start-line="64" selection-start-column="13" selection-end-line="64" selection-end-column="13" />
+        <state vertical-scroll-proportion="0.1056338">
+          <caret line="15" column="22" selection-start-line="15" selection-start-column="22" selection-end-line="15" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/physics/presets/soft_box.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="8" column="1" selection-start-line="8" selection-start-column="1" selection-end-line="8" selection-end-column="1" />
+          <folding>
+            <element signature="n#!!doc;n#SoftBox#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/physics/dynamic_body.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-15.037037">
+          <caret line="31" column="45" selection-start-line="31" selection-start-column="45" selection-end-line="31" selection-end-column="45" />
+          <folding>
+            <element signature="n#!!doc;n#DynamicBody#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-14.0">
+          <caret line="22" column="49" selection-start-line="22" selection-start-column="49" selection-end-line="22" selection-end-column="49" />
+          <folding>
+            <element signature="n#style#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.02855686">
+          <caret line="4" column="36" selection-start-line="4" selection-start-column="36" selection-end-line="4" selection-end-column="36" />
           <folding />
         </state>
       </provider>

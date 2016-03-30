@@ -10,7 +10,7 @@ var Renderer = (function () {
             _this._camera.updateProjectionMatrix();
             _this.renderer.setSize(window.innerWidth, window.innerHeight);
         };
-        this.renderer = new THREE.WebGLRenderer({ alpha: true });
+        this.renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
         this.renderer.setSize(window.innerWidth, window.innerHeight);
         this.renderer.setClearColor(0x000000, 0);
         this.renderer.sortObjects = true;

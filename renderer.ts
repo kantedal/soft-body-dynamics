@@ -13,7 +13,7 @@ class Renderer {
     private _controls: THREE.EditorControls;
 
     constructor(){
-        this.renderer = new THREE.WebGLRenderer({ alpha: true });
+        this.renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
 
         this.renderer.setSize(window.innerWidth, window.innerHeight);
         this.renderer.setClearColor(0x000000,0);

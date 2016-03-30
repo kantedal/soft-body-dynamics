@@ -13,7 +13,7 @@ var CameraSelector = (function () {
                 var closestDistance = 1000;
                 for (var _i = 0, _a = _this._softBody.points; _i < _a.length; _i++) {
                     var point = _a[_i];
-                    var distance = point.currentPos.distanceTo(_this._raycasterSelector.position);
+                    var distance = point.position.distanceTo(_this._raycasterSelector.position);
                     if (distance < closestDistance) {
                         _this._selectedPointMass = point;
                         closestDistance = distance;
@@ -26,7 +26,7 @@ var CameraSelector = (function () {
         this.mouseUp = function (ev) {
             if (_this._isDragging) {
                 _this._isDragging = false;
-                _this._selectedPointMass.lastPos = _this._selectedPointMass.currentPos.clone();
+                _this._selectedPointMass.position = _this._selectedPointMass.position.clone();
                 if (_this._guiHandler.selectionMode == GuiHandler.MOVE_CLOTH)
                     _this._selectedPointMass.isAttatchment = false;
                 _this._renderer.controls.enabled = true;
@@ -36,7 +36,7 @@ var CameraSelector = (function () {
             _this._mouse.x = (ev.clientX / window.innerWidth) * 2 - 1;
             _this._mouse.y = -(ev.clientY / window.innerHeight) * 2 + 1;
             if (_this._isDragging) {
-                _this._selectedPointMass.currentPos.copy(_this._raycasterSelector.position);
+                _this._selectedPointMass.position.copy(_this._raycasterSelector.position);
             }
         };
         this._renderer = renderer;
