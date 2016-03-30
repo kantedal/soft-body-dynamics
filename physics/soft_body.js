@@ -3,6 +3,7 @@
  */
 ///<reference path="./point_mass.ts"/>
 ///<reference path="./dynamic_body.ts"/>
+///<reference path="./integration.ts"/>
 ///<reference path="./../renderer.ts"/>
 ///<reference path="./../app.ts"/>
 ///<reference path="constraints/structure_constraint.ts"/>
@@ -15,13 +16,9 @@ var __extends = (this && this.__extends) || function (d, b) {
 };
 var SoftBody = (function (_super) {
     __extends(SoftBody, _super);
-    function SoftBody(bodyMesh, renderer) {
-        _super.call(this);
+    function SoftBody(bodyMesh, integration, renderer) {
+        _super.call(this, bodyMesh, integration);
         this._renderer = renderer;
-        this._bodyMesh = bodyMesh;
-        this._bodyMesh.castShadow = true;
-        this._bodyMesh.receiveShadow = false;
-        this._pointMesh = [];
         var samplingRateX = 5;
         var samplingRateY = 5;
         var samplingRateZ = 5;

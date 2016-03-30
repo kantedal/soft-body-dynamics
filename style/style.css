@@ -48,16 +48,22 @@
     border-radius: 2px;
     border: 0;
     font-family: 'Roboto', sans-serif;
-    font-weight: 400;
+    font-weight: 300;
     color: #ffffff;
     font-size: 10pt;
     padding: 4px;
-    background: rgba(184, 184, 184, 0.48);
+    background: rgba(184, 184, 184, 0.3);
     text-decoration: none;
 }
 
 .btn:hover {
     background: rgba(76, 129, 161, 0.59);
+    text-decoration: none;
+    border: 0;
+}
+
+.active-btn {
+    background: rgba(184, 184, 184, 0.7);
     text-decoration: none;
     border: 0;
 }

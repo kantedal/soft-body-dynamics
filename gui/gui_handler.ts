@@ -3,6 +3,7 @@
  */
 
 ///<reference path="./../physics/cloth.ts"/>
+///<reference path="./../app.ts"/>
 /// <reference path="./../lib/jquery.d.ts" />
 
 class GuiHandler {
@@ -10,16 +11,18 @@ class GuiHandler {
     public static MOVE_CLOTH = 0;
     public static ADD_PIM = 1;
 
-    private _cloth: Cloth;
+    private _app: App;
     private _selectionMode: number;
 
-    constructor(){
+    constructor(app: App){
+        this._app = app;
         //this._cloth = cloth;
 
         //this.handlePropertiesChange();
         //this.handleDimensionChange();
         //this.handleGravityChange();
         this.handleSelctionChange();
+        //this.handleIntegrationChange();
     }
 
     private handlePropertiesChange(){
@@ -87,21 +90,50 @@ class GuiHandler {
         var self: GuiHandler = this;
 
         this._selectionMode = GuiHandler.MOVE_CLOTH;
-        $('#moveCloth').css('background', 'rgba(184, 184, 184, 0.7)');
-        $('#addPin').css('background-color', 'rgba(184, 184, 184, 0.3)');
+        $('#moveCloth').addClass('active-btn');
 
         $('#moveCloth').click(function() {
             self._selectionMode = GuiHandler.MOVE_CLOTH;
-            $('#moveCloth').css('background', 'rgba(184, 184, 184, 0.7)');
-            $('#addPin').css('background-color', 'rgba(184, 184, 184, 0.3)');
+            $('#moveCloth').addClass('active-btn');
+            $('#addPin').removeClass('active-btn');
         });
 
         $('#addPin').click(function() {
             self._selectionMode = GuiHandler.ADD_PIM;
-            $('#addPin').css('background', 'rgba(184, 184, 184, 0.7)');
-            $('#moveCloth').css('background-color', 'rgba(184, 184, 184, 0.3)');
+            $('#addPin').addClass('active-btn');
+            $('#moveCloth').removeClass('active-btn');
         });
     }
+
+    private handleIntegrationChange(){
+        var self: GuiHandler = this;
+
+
+        $('#verletIntegration').addClass('active-btn');
+
+        $('#verletIntegration').click(function() {
+            self._app.integration.method = Integration.VERLET;
+            $('#verletIntegration').addClass('active-btn');
+            $('#rungeKuttaIntegration').removeClass('active-btn');
+            $('#eulerIntegration').removeClass('active-btn');
+        });
+
+        $('#rungeKuttaIntegration').click(function() {
+            self._app.integration.method = Integration.RUNGE_KUTTA_4;
+            $('#rungeKuttaIntegration').addClass('active-btn');
+            $('#verletIntegration').removeClass('active-btn');
+            $('#eulerIntegration').removeClass('active-btn');
+        });
+
+        $('#eulerIntegration').click(function() {
+            self._app.integration.method = Integration.EULER;
+            $('#eulerIntegration').addClass('active-btn');
+            $('#verletIntegration').removeClass('active-btn');
+            $('#rungeKuttaIntegration').removeClass('active-btn');
+        });
+    }
+
+
 
     get selectionMode():number {
         return this._selectionMode;

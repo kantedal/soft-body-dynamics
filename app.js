@@ -2,6 +2,7 @@
  * Created by filles-dator on 2016-03-26.
  */
 ///<reference path="./renderer.ts"/>
+///<reference path="./physics/integration.ts"/>
 ///<reference path="./physics/cloth.ts"/>
 ///<reference path="./physics/soft_body.ts"/>
 ///<reference path="./gui/gui_handler.ts"/>
@@ -14,6 +15,7 @@ var App = (function () {
         this._renderer = new Renderer();
         this._clock = new THREE.Clock();
         this._stats = new Stats();
+        this._integration = new Integration(Integration.VERLET);
         this._cloth = new Cloth(30, 50, this._renderer);
         var plane_geometry = new THREE.PlaneGeometry(4000, 4000, 1, 1);
         var plane_material = new THREE.MeshPhongMaterial({ color: 0x999999, side: THREE.DoubleSide });
@@ -31,7 +33,7 @@ var App = (function () {
         });
         var cube = new THREE.Mesh(cube_geometry, cube_material);
         this._renderer.scene.add(cube);
-        this._softBody = new SoftBody(cube, this._renderer);
+        this._softBody = new SoftBody(cube, this._integration, this._renderer);
         //var geometry = new THREE.SphereGeometry( 20, 8, 8 );
         //var material = new THREE.MeshPhongMaterial({
         //    side: THREE.DoubleSide,
@@ -42,7 +44,7 @@ var App = (function () {
         //var sphere = new THREE.Mesh( geometry, material );
         //this._renderer.scene.add( sphere );
         //this._softBody = new SoftBody(sphere, [0,4], [19,21], this._renderer);
-        this._guiHandler = new GuiHandler(this._cloth);
+        this._guiHandler = new GuiHandler(this);
         this._cameraSelector = new CameraSelector(this._softBody, this._guiHandler, this._renderer);
     }
     App.prototype.start = function () {
@@ -64,6 +66,16 @@ var App = (function () {
         this._stats.end();
         requestAnimationFrame(function () { return _this.update(); });
     };
+    Object.defineProperty(App.prototype, "integration", {
+        get: function () {
+            return this._integration;
+        },
+        set: function (value) {
+            this._integration = value;
+        },
+        enumerable: true,
+        configurable: true
+    });
     App.DEVELOPER_MODE = false;
     App.CAST_SHADOW = true;
     return App;

@@ -26,6 +26,7 @@ var CameraSelector = (function () {
         this.mouseUp = function (ev) {
             if (_this._isDragging) {
                 _this._isDragging = false;
+                _this._selectedPointMass.lastPos = _this._selectedPointMass.currentPos.clone();
                 if (_this._guiHandler.selectionMode == GuiHandler.MOVE_CLOTH)
                     _this._selectedPointMass.isAttatchment = false;
                 _this._renderer.controls.enabled = true;

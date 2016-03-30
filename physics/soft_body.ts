@@ -3,6 +3,7 @@
  */
 ///<reference path="./point_mass.ts"/>
 ///<reference path="./dynamic_body.ts"/>
+///<reference path="./integration.ts"/>
 ///<reference path="./../renderer.ts"/>
 ///<reference path="./../app.ts"/>
 ///<reference path="constraints/structure_constraint.ts"/>
@@ -12,14 +13,9 @@
 class SoftBody extends DynamicBody {
     private _renderer: Renderer;
 
-    constructor(bodyMesh: THREE.Mesh, renderer: Renderer) {
-        super();
-
+    constructor(bodyMesh: THREE.Mesh, integration: Integration, renderer: Renderer) {
+        super(bodyMesh, integration);
         this._renderer = renderer;
-        this._bodyMesh = bodyMesh;
-        this._bodyMesh.castShadow = true;
-        this._bodyMesh.receiveShadow = false;
-        this._pointMesh = [];
 
         var samplingRateX = 5;
         var samplingRateY = 5;

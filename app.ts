@@ -3,6 +3,7 @@
  */
 
 ///<reference path="./renderer.ts"/>
+///<reference path="./physics/integration.ts"/>
 ///<reference path="./physics/cloth.ts"/>
 ///<reference path="./physics/soft_body.ts"/>
 ///<reference path="./gui/gui_handler.ts"/>
@@ -19,6 +20,7 @@ class App {
     private _guiHandler: GuiHandler;
     private _cameraSelector: CameraSelector;
     private _stats: Stats;
+    private _integration: Integration;
     private _clock: THREE.Clock;
     private _cloth: Cloth;
     private _softBody: SoftBody;
@@ -27,6 +29,7 @@ class App {
         this._renderer = new Renderer();
         this._clock = new THREE.Clock();
         this._stats = new Stats();
+        this._integration = new Integration(Integration.VERLET);
         this._cloth = new Cloth(30,50,this._renderer);
 
         var plane_geometry = new THREE.PlaneGeometry( 4000, 4000, 1, 1 );
@@ -46,7 +49,7 @@ class App {
         });
         var cube = new THREE.Mesh( cube_geometry, cube_material );
         this._renderer.scene.add( cube );
-        this._softBody = new SoftBody(cube, this._renderer);
+        this._softBody = new SoftBody(cube, this._integration, this._renderer);
 
         //var geometry = new THREE.SphereGeometry( 20, 8, 8 );
         //var material = new THREE.MeshPhongMaterial({
@@ -60,7 +63,7 @@ class App {
         //this._softBody = new SoftBody(sphere, [0,4], [19,21], this._renderer);
 
 
-        this._guiHandler = new GuiHandler(this._cloth);
+        this._guiHandler = new GuiHandler(this);
         this._cameraSelector = new CameraSelector(this._softBody, this._guiHandler, this._renderer);
     }
 
@@ -87,6 +90,13 @@ class App {
         this._renderer.render();
         this._stats.end();
         requestAnimationFrame(() => this.update());
+    }
+
+    set integration(value:Integration) {
+        this._integration = value;
+    }
+    get integration():Integration {
+        return this._integration;
     }
 }
 

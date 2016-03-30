@@ -101,6 +101,7 @@ class CameraSelector {
         if(this._isDragging){
             this._isDragging = false;
 
+            this._selectedPointMass.lastPos = this._selectedPointMass.currentPos.clone();
             if(this._guiHandler.selectionMode == GuiHandler.MOVE_CLOTH)
                 this._selectedPointMass.isAttatchment = false;
 
