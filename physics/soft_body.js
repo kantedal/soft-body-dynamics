@@ -15,18 +15,15 @@ var __extends = (this && this.__extends) || function (d, b) {
 };
 var SoftBody = (function (_super) {
     __extends(SoftBody, _super);
-    function SoftBody(bodyMesh, renderer) {
+    function SoftBody(bodyMesh, samplingRate, renderer) {
         _super.call(this, bodyMesh);
         this._renderer = renderer;
-        var samplingRateX = 5;
-        var samplingRateY = 5;
-        var samplingRateZ = 5;
         var body_geometry = bodyMesh.geometry.clone();
         body_geometry.computeBoundingBox();
         var boundingBox = body_geometry.boundingBox;
-        for (var x = boundingBox.min.x; x <= boundingBox.max.x; x += samplingRateX) {
-            for (var y = boundingBox.min.y; y <= boundingBox.max.y; y += samplingRateY) {
-                for (var z = boundingBox.min.z; z <= boundingBox.max.z; z += samplingRateZ) {
+        for (var x = boundingBox.min.x; x <= boundingBox.max.x; x += samplingRate.x) {
+            for (var y = boundingBox.min.y; y <= boundingBox.max.y; y += samplingRate.y) {
+                for (var z = boundingBox.min.z; z <= boundingBox.max.z; z += samplingRate.z) {
                     if (this.pointInsideMesh(this._bodyMesh.clone(), new THREE.Vector3(x, y, z))) {
                         var geometry = new THREE.SphereGeometry(0.5, 8, 8);
                         var material = new THREE.MeshBasicMaterial({
@@ -41,8 +38,8 @@ var SoftBody = (function (_super) {
                 }
             }
         }
-        var max_distance_structure = Math.sqrt(samplingRateX * samplingRateX + samplingRateY * samplingRateY + samplingRateZ * samplingRateZ);
-        var max_distance_bend = Math.sqrt(2 * samplingRateX * samplingRateX + 2 * samplingRateY * samplingRateY + 2 * samplingRateZ * samplingRateZ);
+        var max_distance_structure = Math.sqrt(samplingRate.x * samplingRate.x + samplingRate.y * samplingRate.y + samplingRate.z * samplingRate.z);
+        var max_distance_bend = Math.sqrt(2 * samplingRate.x * samplingRate.x + 2 * samplingRate.y * samplingRate.y + 2 * samplingRate.z * samplingRate.z);
         for (var i = 0; i < this._points.length; i++) {
             for (var j = 0; j < this._points.length; j++) {
                 if (j != i) {

@@ -5,6 +5,7 @@
 ///<reference path="./renderer.ts"/>
 ///<reference path="./physics/cloth.ts"/>
 ///<reference path="./physics/soft_body.ts"/>
+///<reference path="./physics/presets/soft_box.ts"/>
 ///<reference path="./gui/gui_handler.ts"/>
 ///<reference path="./gui/camera_selector.ts"/>
 ///<reference path="./physics/point_mass.ts"/>
@@ -21,7 +22,8 @@ class App {
     private _stats: Stats;
     private _clock: THREE.Clock;
     private _cloth: Cloth;
-    private _softBody: SoftBody;
+    private _softBox: SoftBox;
+    private _dimensions: THREE.Vector3;
 
     public constructor(){
         this._renderer = new Renderer();
@@ -37,31 +39,11 @@ class App {
         plane.receiveShadow = true;
         this._renderer.scene.add( plane );
 
-        var cube_geometry = new THREE.BoxGeometry( 150, 5, 5, 30, 1, 1 );
-        var cube_material = new THREE.MeshPhongMaterial({
-            side: THREE.DoubleSide,
-            color: 0x664444,
-            specular: 0x225522,
-            shininess: 100
-        });
-        var cube = new THREE.Mesh( cube_geometry, cube_material );
-        this._renderer.scene.add( cube );
-        this._softBody = new SoftBody(cube, this._integration, this._renderer);
 
-        //var geometry = new THREE.SphereGeometry( 20, 8, 8 );
-        //var material = new THREE.MeshPhongMaterial({
-        //    side: THREE.DoubleSide,
-        //    color: 0x444499,
-        //    specular: 0x222222,
-        //    shininess: 1000
-        //});
-        //var sphere = new THREE.Mesh( geometry, material );
-        //this._renderer.scene.add( sphere );
-        //this._softBody = new SoftBody(sphere, [0,4], [19,21], this._renderer);
-
-
+        this._dimensions = new THREE.Vector3(150, 5, 5);
+        this._softBox = new SoftBox(this._dimensions, this._renderer);
         this._guiHandler = new GuiHandler(this);
-        this._cameraSelector = new CameraSelector(this._softBody, this._guiHandler, this._renderer);
+        this._cameraSelector = new CameraSelector(this._softBox, this._guiHandler, this._renderer);
     }
 
     public start():void{
@@ -80,7 +62,7 @@ class App {
         this._stats.begin();
 
         //this._cloth.update(this._clock.getElapsedTime(), 0.05);
-        this._softBody.update(this._clock.getElapsedTime(), 0.05);
+        this._softBox.update(this._clock.getElapsedTime(), 0.05);
 
         this._cameraSelector.update();
 
@@ -89,11 +71,27 @@ class App {
         requestAnimationFrame(() => this.update());
     }
 
-    set integration(value:Integration) {
-        this._integration = value;
+
+    public regenerateSoftBox(){
+        this._renderer.scene.remove(this._softBox.bodyMesh);
+        this._softBox = new SoftBox(this._dimensions, this._renderer);
+        this._cameraSelector = new CameraSelector(this._softBox, this._guiHandler, this._renderer);
     }
-    get integration():Integration {
-        return this._integration;
+
+    get softBox():SoftBox {
+        return this._softBox;
+    }
+
+    set softBox(value:SoftBox) {
+        this._softBox = value;
+    }
+
+    get dimensions():THREE.Vector3 {
+        return this._dimensions;
+    }
+
+    set dimensions(value:THREE.Vector3) {
+        this._dimensions = value;
     }
 }
 

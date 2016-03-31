@@ -14,8 +14,8 @@ var FrictionConstraint = (function () {
     }
     FrictionConstraint.prototype.solve = function () {
         if (this._pointMass.isColliding) {
-            this._pointMass.velocity.setX(this._pointMass.velocity.x * 0.7);
-            this._pointMass.velocity.setZ(this._pointMass.velocity.z * 0.7);
+            this._pointMass.velocity.setX(this._pointMass.velocity.x * 0.9);
+            this._pointMass.velocity.setZ(this._pointMass.velocity.z * 0.9);
         }
     };
     return FrictionConstraint;

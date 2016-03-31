@@ -9,7 +9,7 @@ var GuiHandler = (function () {
         this._app = app;
         //this._cloth = cloth;
         //this.handlePropertiesChange();
-        //this.handleDimensionChange();
+        this.handleDimensionChange();
         //this.handleGravityChange();
         this.handleSelctionChange();
         //this.handleIntegrationChange();
@@ -29,17 +29,23 @@ var GuiHandler = (function () {
     };
     GuiHandler.prototype.handleDimensionChange = function () {
         var self = this;
-        $('#dimensionX').val(self._cloth.dimensionX);
-        $('#dimensionY').val(self._cloth.dimensionY);
-        $('#dimensionX').on('change', function () {
-            self._cloth.dimensionX = Math.max(2, Math.min(100, $('#dimensionX').val()));
-            $('#dimensionX').val(self._cloth.dimensionX);
-            self._cloth.generate();
+        $('#dimX').val(this._app.dimensions.x);
+        $('#dimY').val(this._app.dimensions.y);
+        $('#dimZ').val(this._app.dimensions.z);
+        $('#dimX').on('change', function () {
+            self._app.dimensions.x = Math.max(2, Math.min(500, $('#dimX').val()));
+            $('#dimX').val(self._app.dimensions.x);
+            self._app.regenerateSoftBox();
         });
-        $('#dimensionY').on('change', function () {
-            self._cloth.dimensionY = Math.max(2, Math.min(100, $('#dimensionY').val()));
-            $('#dimensionY').val(self._cloth.dimensionY);
-            self._cloth.generate();
+        $('#dimY').on('change', function () {
+            self._app.dimensions.y = Math.max(2, Math.min(500, $('#dimY').val()));
+            $('#dimY').val(self._app.dimensions.y);
+            self._app.regenerateSoftBox();
+        });
+        $('#dimZ').on('change', function () {
+            self._app.dimensions.z = Math.max(2, Math.min(500, $('#dimZ').val()));
+            $('#dimZ').val(self._app.dimensions.z);
+            self._app.regenerateSoftBox();
         });
     };
     GuiHandler.prototype.handleGravityChange = function () {
