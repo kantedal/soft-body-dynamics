@@ -2,6 +2,7 @@
  * Created by filles-dator on 2016-03-28.
  */
 
-public interface Constraint {
+interface Constraint {
+    shouldRemove:boolean;
     solve():void;
 }

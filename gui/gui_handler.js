@@ -2,14 +2,17 @@
  * Created by filles-dator on 2016-03-27.
  */
 ///<reference path="./../physics/cloth.ts"/>
+///<reference path="./../app.ts"/>
 /// <reference path="./../lib/jquery.d.ts" />
 var GuiHandler = (function () {
-    function GuiHandler(cloth) {
-        this._cloth = cloth;
-        this.handlePropertiesChange();
+    function GuiHandler(app) {
+        this._app = app;
+        //this._cloth = cloth;
+        //this.handlePropertiesChange();
         this.handleDimensionChange();
-        this.handleGravityChange();
+        //this.handleGravityChange();
         this.handleSelctionChange();
+        //this.handleIntegrationChange();
     }
     GuiHandler.prototype.handlePropertiesChange = function () {
         var self = this;
@@ -26,17 +29,23 @@ var GuiHandler = (function () {
     };
     GuiHandler.prototype.handleDimensionChange = function () {
         var self = this;
-        $('#dimensionX').val(self._cloth.dimensionX);
-        $('#dimensionY').val(self._cloth.dimensionY);
-        $('#dimensionX').on('change', function () {
-            self._cloth.dimensionX = Math.max(2, Math.min(100, $('#dimensionX').val()));
-            $('#dimensionX').val(self._cloth.dimensionX);
-            self._cloth.generate();
+        $('#dimX').val(this._app.dimensions.x);
+        $('#dimY').val(this._app.dimensions.y);
+        $('#dimZ').val(this._app.dimensions.z);
+        $('#dimX').on('change', function () {
+            self._app.dimensions.x = Math.max(2, Math.min(500, $('#dimX').val()));
+            $('#dimX').val(self._app.dimensions.x);
+            self._app.regenerateSoftBox();
         });
-        $('#dimensionY').on('change', function () {
-            self._cloth.dimensionY = Math.max(2, Math.min(100, $('#dimensionY').val()));
-            $('#dimensionY').val(self._cloth.dimensionY);
-            self._cloth.generate();
+        $('#dimY').on('change', function () {
+            self._app.dimensions.y = Math.max(2, Math.min(500, $('#dimY').val()));
+            $('#dimY').val(self._app.dimensions.y);
+            self._app.regenerateSoftBox();
+        });
+        $('#dimZ').on('change', function () {
+            self._app.dimensions.z = Math.max(2, Math.min(500, $('#dimZ').val()));
+            $('#dimZ').val(self._app.dimensions.z);
+            self._app.regenerateSoftBox();
         });
     };
     GuiHandler.prototype.handleGravityChange = function () {
@@ -60,19 +69,38 @@ var GuiHandler = (function () {
     GuiHandler.prototype.handleSelctionChange = function () {
         var self = this;
         this._selectionMode = GuiHandler.MOVE_CLOTH;
-        $('#moveCloth').css('background', 'rgba(184, 184, 184, 0.7)');
-        $('#addPin').css('background-color', 'rgba(184, 184, 184, 0.3)');
-        $('#moveCloth').val(self._cloth.gravity.x);
-        $('#addPin').val(self._cloth.gravity.y);
+        $('#moveCloth').addClass('active-btn');
         $('#moveCloth').click(function () {
             self._selectionMode = GuiHandler.MOVE_CLOTH;
-            $('#moveCloth').css('background', 'rgba(184, 184, 184, 0.7)');
-            $('#addPin').css('background-color', 'rgba(184, 184, 184, 0.3)');
+            $('#moveCloth').addClass('active-btn');
+            $('#addPin').removeClass('active-btn');
         });
         $('#addPin').click(function () {
             self._selectionMode = GuiHandler.ADD_PIM;
-            $('#addPin').css('background', 'rgba(184, 184, 184, 0.7)');
-            $('#moveCloth').css('background-color', 'rgba(184, 184, 184, 0.3)');
+            $('#addPin').addClass('active-btn');
+            $('#moveCloth').removeClass('active-btn');
+        });
+    };
+    GuiHandler.prototype.handleIntegrationChange = function () {
+        var self = this;
+        $('#verletIntegration').addClass('active-btn');
+        $('#verletIntegration').click(function () {
+            self._app.integration.method = Integration.VERLET;
+            $('#verletIntegration').addClass('active-btn');
+            $('#rungeKuttaIntegration').removeClass('active-btn');
+            $('#eulerIntegration').removeClass('active-btn');
+        });
+        $('#rungeKuttaIntegration').click(function () {
+            self._app.integration.method = Integration.RUNGE_KUTTA_4;
+            $('#rungeKuttaIntegration').addClass('active-btn');
+            $('#verletIntegration').removeClass('active-btn');
+            $('#eulerIntegration').removeClass('active-btn');
+        });
+        $('#eulerIntegration').click(function () {
+            self._app.integration.method = Integration.EULER;
+            $('#eulerIntegration').addClass('active-btn');
+            $('#verletIntegration').removeClass('active-btn');
+            $('#rungeKuttaIntegration').removeClass('active-btn');
         });
     };
     Object.defineProperty(GuiHandler.prototype, "selectionMode", {

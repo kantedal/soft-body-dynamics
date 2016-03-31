@@ -6,33 +6,35 @@
 ///<reference path="./../app.ts"/>
 var PointMass = (function () {
     function PointMass(position, mass) {
-        this._currentPos = position.clone();
-        this._lastPos = position.clone();
+        this._nextPosition = position.clone();
+        this._position = position.clone();
+        this._velocity = new THREE.Vector3(0, 0, 0);
         this._mass = mass;
         this._constraintForce = new THREE.Vector3(0, 0, 0);
         this._isAttatchment = false;
+        this._isColliding = false;
         this._vertexIndices = [];
         this._vertexOffset = [];
     }
     PointMass.prototype.attatchVertex = function (index, offset) {
         this._vertexIndices.push(index);
     };
-    Object.defineProperty(PointMass.prototype, "lastPos", {
+    Object.defineProperty(PointMass.prototype, "position", {
         get: function () {
-            return this._lastPos;
+            return this._position;
         },
         set: function (value) {
-            this._lastPos = value;
+            this._position = value;
         },
         enumerable: true,
         configurable: true
     });
-    Object.defineProperty(PointMass.prototype, "currentPos", {
+    Object.defineProperty(PointMass.prototype, "nextPosition", {
         get: function () {
-            return this._currentPos;
+            return this._nextPosition;
         },
         set: function (value) {
-            this._currentPos = value;
+            this._nextPosition = value;
         },
         enumerable: true,
         configurable: true
@@ -74,6 +76,36 @@ var PointMass = (function () {
     Object.defineProperty(PointMass.prototype, "vertexOffset", {
         get: function () {
             return this._vertexOffset;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(PointMass.prototype, "velocity", {
+        get: function () {
+            return this._velocity;
+        },
+        set: function (value) {
+            this._velocity = value;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(PointMass.prototype, "acceleration", {
+        get: function () {
+            return this._acceleration;
+        },
+        set: function (value) {
+            this._acceleration = value;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(PointMass.prototype, "isColliding", {
+        get: function () {
+            return this._isColliding;
+        },
+        set: function (value) {
+            this._isColliding = value;
         },
         enumerable: true,
         configurable: true

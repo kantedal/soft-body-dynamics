@@ -7,6 +7,8 @@
 ///<reference path="./../../renderer.ts"/>
 
 class StructureConstraint implements Constraint {
+    shouldRemove:boolean = false;
+
     private _renderer: Renderer;
     private _restingDistance: number = 1;
     private _tearingDistance: number = 2;
@@ -23,8 +25,8 @@ class StructureConstraint implements Constraint {
 
         if(App.DEVELOPER_MODE){
             var geometry = new THREE.Geometry();
-            geometry.vertices.push(this._pointMassA.currentPos);
-            geometry.vertices.push(this._pointMassB.currentPos);
+            geometry.vertices.push(this._pointMassA.position);
+            geometry.vertices.push(this._pointMassB.position);
             this._connectorLine = new THREE.Line(geometry, new THREE.LineBasicMaterial({color: 0x0000ff}));
             this._renderer.scene.add(this._connectorLine);
         }
@@ -32,9 +34,9 @@ class StructureConstraint implements Constraint {
 
 
     public solve() {
-        var delta = this._pointMassB.currentPos.clone().sub(this._pointMassA.currentPos);
+        var delta = this._pointMassB.position.clone().sub(this._pointMassA.position);
         delta.normalize();
-        var length = this._pointMassA.currentPos.distanceTo(this._pointMassB.currentPos);
+        var length = this._pointMassA.position.distanceTo(this._pointMassB.position);
         var offset = delta.multiplyScalar(length - this._restingDistance);
 
         var multiplier = 0.5;
@@ -42,14 +44,14 @@ class StructureConstraint implements Constraint {
             multiplier = 1;
 
         if (!this._pointMassA.isAttatchment)
-            this._pointMassA.currentPos.add(offset.clone().multiplyScalar(multiplier));
+            this._pointMassA.position.add(offset.clone().multiplyScalar(multiplier));
 
         if (!this._pointMassB.isAttatchment)
-            this._pointMassB.currentPos.sub(offset.clone().multiplyScalar(multiplier));
+            this._pointMassB.position.sub(offset.clone().multiplyScalar(multiplier));
 
         if (App.DEVELOPER_MODE) {
-            this._connectorLine.geometry.vertices[0].copy(this._pointMassA.currentPos);
-            this._connectorLine.geometry.vertices[1].copy(this._pointMassB.currentPos);
+            this._connectorLine.geometry.vertices[0].copy(this._pointMassA.position);
+            this._connectorLine.geometry.vertices[1].copy(this._pointMassB.position);
             this._connectorLine.geometry.verticesNeedUpdate = true;
         }
     }

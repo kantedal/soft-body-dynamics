@@ -7,6 +7,8 @@
 ///<reference path="./constraint.ts"/>
 
 class BendConstraint implements Constraint {
+    shouldRemove:boolean = false;
+
     private _renderer: Renderer;
     private _restingDistance: number = 1;
     private _tearingDistance: number = 2;
@@ -25,22 +27,20 @@ class BendConstraint implements Constraint {
 
 
     public solve() {
-        var delta = this._pointMassB.currentPos.clone().sub(this._pointMassA.currentPos);
+        var delta = this._pointMassB.position.clone().sub(this._pointMassA.position);
         delta.normalize();
-        var length = this._pointMassA.currentPos.distanceTo(this._pointMassB.currentPos);
+        var length = this._pointMassA.position.distanceTo(this._pointMassB.position);
         var offset = delta.multiplyScalar(length - this._restingDistance);
 
         offset.multiplyScalar(this._stiffness);
 
         var multiplier = 0.5;
-        if (this._pointMassA.isAttatchment || this._pointMassB.isAttatchment)
-            multiplier = 1;
 
         if (!this._pointMassA.isAttatchment)
-            this._pointMassA.currentPos.add(offset.clone().multiplyScalar(multiplier));
+            this._pointMassA.position.add(offset.clone().multiplyScalar(multiplier));
 
         if (!this._pointMassB.isAttatchment)
-            this._pointMassB.currentPos.sub(offset.clone().multiplyScalar(multiplier));
+            this._pointMassB.position.sub(offset.clone().multiplyScalar(multiplier));
     }
 
     set stiffness(value:number) {

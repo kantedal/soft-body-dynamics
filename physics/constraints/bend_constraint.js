@@ -6,6 +6,7 @@
 ///<reference path="./constraint.ts"/>
 var BendConstraint = (function () {
     function BendConstraint(restingDistance, stiffness, pointMassA, pointMassB, renderer) {
+        this.shouldRemove = false;
         this._restingDistance = 1;
         this._tearingDistance = 2;
         this._renderer = renderer;
@@ -15,18 +16,16 @@ var BendConstraint = (function () {
         this._pointMassB = pointMassB;
     }
     BendConstraint.prototype.solve = function () {
-        var delta = this._pointMassB.currentPos.clone().sub(this._pointMassA.currentPos);
+        var delta = this._pointMassB.position.clone().sub(this._pointMassA.position);
         delta.normalize();
-        var length = this._pointMassA.currentPos.distanceTo(this._pointMassB.currentPos);
+        var length = this._pointMassA.position.distanceTo(this._pointMassB.position);
         var offset = delta.multiplyScalar(length - this._restingDistance);
         offset.multiplyScalar(this._stiffness);
         var multiplier = 0.5;
-        if (this._pointMassA.isAttatchment || this._pointMassB.isAttatchment)
-            multiplier = 1;
         if (!this._pointMassA.isAttatchment)
-            this._pointMassA.currentPos.add(offset.clone().multiplyScalar(multiplier));
+            this._pointMassA.position.add(offset.clone().multiplyScalar(multiplier));
         if (!this._pointMassB.isAttatchment)
-            this._pointMassB.currentPos.sub(offset.clone().multiplyScalar(multiplier));
+            this._pointMassB.position.sub(offset.clone().multiplyScalar(multiplier));
     };
     Object.defineProperty(BendConstraint.prototype, "stiffness", {
         set: function (value) {
